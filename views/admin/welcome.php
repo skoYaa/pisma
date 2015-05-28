@@ -11,7 +11,7 @@ use yii\helpers\Html;
 <div class="jumbotron">
   <h1>Pozdrav <?php echo Yii::$app->user->identity->user_name; ?></h1>
  
-  <p><a class="btn btn-primary btn-lg" href="http://localhost/pisma.ba/pisma/web/index.php?r=account/index" role="button">Nastavi</a></p>
+  <p><a class="btn btn-primary btn-lg" href="http://localhost/pisma/web/index.php?r=account/index" role="button">Nastavi</a></p>
 </div> 
         
         

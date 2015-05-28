@@ -12,23 +12,36 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'text')->textInput(['maxlength' => 1000]) ?>
+    <div class="row">
+        <div class="col-md-6">
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 50]) ?>
+            <?= $form->field($model, 'name')->label('Naslov')->textInput(['maxlength' => 50]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => 200]) ?>
+            <?= $form->field($model, 'description')->label('Opis')->textInput(['maxlength' => 200]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+            <?= $form->field($model, 'text')->label('Sadržaj pisma')->textarea(['maxlength' => 1000], ['rows' => '6']) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
 
-    <?= $form->field($model, 'active')->textInput() ?>
+        </div>
+        <div class="col-md-6">
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+
+            <?= $form->field($model, 'account_id')->textInput()->label('Kreirao/modifikovao') ?>
+
+            <?= $form->field($model, 'active')->label('Active')->radioList(['0' => 'Neaktivan', '1' => 'Aktivan']); ?>
+
+        </div>
+    </div>
+
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Potvrdi' : 'Potvrdi', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <a href="http://localhost/pisma/web/index.php?r=template/index" class="btn btn-info" role="button">Poništi</a>
     </div>
+
+
+
+
 
     <?php ActiveForm::end(); ?>
 

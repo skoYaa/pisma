@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TagSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tags';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Tag';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tag-index">
 
@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Tag', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novi tag', ['create'], ['class' => 'btn btn-success']) ?>
+        
     </p>
 
     <?= GridView::widget([

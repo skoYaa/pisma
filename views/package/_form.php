@@ -12,14 +12,24 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 50]) ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => 50]) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'category_amount')->textInput() ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'package_price')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'category_amount')->textInput() ?>
 
-    <?= $form->field($model, 'package_price')->textInput() ?>
+
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Potvrdi ' : 'Potvrdi', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <a href="http://localhost/pisma/web/index.php?r=package/index" class="btn btn-info" role="button">Poništi</a>
     </div>
 
     <?php ActiveForm::end(); ?>

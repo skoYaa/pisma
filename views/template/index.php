@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\TemplateSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Templates';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Pisma';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="template-index">
 
@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Template', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novo pismo', ['create'], ['class' => 'btn btn-success']) ?>
+        
     </p>
 
     <?= GridView::widget([
@@ -25,14 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'text',
+            //'id',
+            //'text',
             'name',
             'description',
             'created_at',
-            // 'updated_at',
-            // 'active',
-            // 'account_id',
+            'updated_at',
+            'active',
+            'account_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

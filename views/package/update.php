@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\Package */
 
 $this->title = 'Update Package: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Packages', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+//$this->params['breadcrumbs'][] = ['label' => 'Packages', 'url' => ['index']];
+//$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+//$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="package-update">
 

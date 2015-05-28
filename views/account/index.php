@@ -7,41 +7,43 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AccountSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Accounts';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Korisnički računi';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
+
 
     <p>
-        <?= Html::a('Create Account', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novi korisnik', ['create'], ['class' => 'btn btn-success']) ?>
+        
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            //'id',
             'user_name',
-            'pass',
+            //'pass',
             'first_name',
             'last_name',
+            'company_name',
             // 'email:email',
             // 'phone',
             // 'adress',
             // 'city',
             // 'country',
-            // 'status',
-            // 'company_name',
-            // 'administrator',
+            'status',
+            'administrator',
             // 'pdv_number',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 
 </div>

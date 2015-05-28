@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PaymentMethodSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Payment Methods';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Metod plaćanja';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="payment-method-index">
 
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Payment Method', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Novi metod plaćanja', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

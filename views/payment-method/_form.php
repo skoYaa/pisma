@@ -15,7 +15,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'payment_method')->textInput(['maxlength' => 30]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Potvrdi' : 'Potvrdi', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <a href="http://localhost/pisma/web/index.php?r=payment-method/index" class="btn btn-info" role="button">Poništi</a>
     </div>
 
     <?php ActiveForm::end(); ?>
