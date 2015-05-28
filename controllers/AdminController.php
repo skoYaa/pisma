@@ -70,7 +70,7 @@ class AdminController extends Controller {
             
             $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
             
-            if($isAdmin=='0'){ //ako nije admin, baca ga na stranicu za frontend korisnike
+            if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
                 return $this->redirect('index.php');
             }
             else {
