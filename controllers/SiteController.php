@@ -65,6 +65,19 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+             
+            
+            $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+            
+            if($isAdmin=='1'){ //ako je admin, baca ga na admin kontroler
+                return $this->redirect('index.php?r=admin');
+            }
+            else {
+                return $this->render('index');
+            }
+            
+            
+            
             return $this->goBack();
         } else {
             return $this->render('login', [
