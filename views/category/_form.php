@@ -22,7 +22,10 @@ use yii\widgets\ActiveForm;
         <div class="col-md-6">
             <?= $form->field($model, 'parent_category')->textInput() ?>
 
-            <?= $form->field($model, 'account_id')->textInput() ?>
+            <?php
+            $model->account_id = Yii::$app->user->identity->id; //pokupi vrijednost id aktivnog accounta
+            echo Html::activeHiddenInput($model, 'account_id'); //unese ga u polje pomocu hidden inputa.
+            ?>
         </div>
     </div>
 
