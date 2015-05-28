@@ -67,6 +67,17 @@ class AdminController extends Controller {
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            
+            $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+            
+            if($isAdmin=='0'){ //ako nije admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+            }
+            else {
+                return $this->render('index');
+            }
+            
+            
             return $this->render('welcome');
             //return $this->redirect(['account/index']);
         } else {
