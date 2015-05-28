@@ -24,12 +24,15 @@ use yii\widgets\ActiveForm;
 
         </div>
         <div class="col-md-6">
-
-
-            <?= $form->field($model, 'account_id')->textInput()->label('Kreirao/modifikovao') ?>
+            
+            <?php
+            $model->account_id = Yii::$app->user->identity->id; //pokupi vrijednost id aktivnog accounta
+            echo Html::activeHiddenInput($model, 'account_id'); //unese ga u polje pomocu hidden inputa.
+            ?>
 
             <?= $form->field($model, 'active')->label('Active')->radioList(['0' => 'Neaktivan', '1' => 'Aktivan']); ?>
-
+            
+         
         </div>
     </div>
 
