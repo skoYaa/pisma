@@ -68,7 +68,12 @@ class AccountController extends Controller {
     public function actionIndex() {
         $searchModel = new AccountSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
+        
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
@@ -81,6 +86,12 @@ class AccountController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
+        
         return $this->render('view', [
                     'model' => $this->findModel($id),
         ]);
@@ -93,7 +104,12 @@ class AccountController extends Controller {
      */
     public function actionCreate() {
         $model = new account();
-
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -111,7 +127,12 @@ class AccountController extends Controller {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
