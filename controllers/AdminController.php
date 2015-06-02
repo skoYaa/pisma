@@ -73,13 +73,12 @@ class AdminController extends Controller {
             if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
                 return $this->redirect('index.php');
             }
-            else {
-                return $this->render('index');
-            }
             
+            //izbriso else dio jer je suvisan... ako gornji uslov nije ispunjen tj. ako je amnistrator nek crta wellcome page
+                //tj. da nastavi sa radom, a ne da vraca ponovo na login
             
             return $this->render('welcome');
-            //return $this->redirect(['account/index']);
+            
         } else {
             return $this->render('login', [
                         'model' => $model,

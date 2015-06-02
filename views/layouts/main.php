@@ -47,6 +47,7 @@ AppAsset::register($this);
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'nav navbar-nav navbar-right',
+                              
                                ],
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
@@ -64,7 +65,7 @@ AppAsset::register($this);
         ?>
                 </div></div></div></header>
         
-        <div class="container">
+    <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>

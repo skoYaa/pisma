@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Tag */
 
 $this->title = 'Unos taga';
-//$this->params['breadcrumbs'][] = ['label' => 'Tags', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Tagovi', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tag-create">
 

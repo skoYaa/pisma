@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Template */
 
 $this->title = 'Unos pisma';
-//$this->params['breadcrumbs'][] = ['label' => 'Templates', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Templates', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="template-create">
 

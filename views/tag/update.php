@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\Tag */
 
 $this->title = 'Izmjena taga: ' . ' ' . $model->name;
-//$this->params['breadcrumbs'][] = ['label' => 'Tags', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-//$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => 'Tagovi', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="tag-update">
 

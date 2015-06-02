@@ -7,8 +7,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Package */
 
 $this->title = 'Kreiranje paketa';
-//$this->params['breadcrumbs'][] = ['label' => 'Packages', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Kreiranje paketa', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="package-create">
 

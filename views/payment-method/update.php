@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model app\models\PaymentMethod */
 
 $this->title = 'Izmjena metoda plaćanja: ' . ' ' . $model->id;
-//$this->params['breadcrumbs'][] = ['label' => 'Payment Methods', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-//$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => 'Metodi placanja', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="payment-method-update">
 

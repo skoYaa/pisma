@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Account */
 
 $this->title = 'Kreiranje računa';
-//$this->params['breadcrumbs'][] = ['label' => 'Accounts', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Korisnicki racuni', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-create">
 

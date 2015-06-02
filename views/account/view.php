@@ -8,8 +8,8 @@ use yii\widgets\DetailView;
 
 
 $this->title = $model->user_name;
-//$this->params['breadcrumbs'][] = ['label' => 'Accounts', 'url' => ['index']];
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'Accounts', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
