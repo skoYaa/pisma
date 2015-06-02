@@ -53,11 +53,19 @@ class AdminController extends Controller {
     }
 
     public function actionIndex() {
-       if (Yii::$app->user->isGuest){
-        return $this->render('index');
-       }
-       else 
-           return $this->render('welcome');
+
+
+
+        if (Yii::$app->user->isGuest) {
+            return $this->render('index');
+        } else {
+            $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+            if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+            }
+            return $this->render('welcome');
+        }
+        return $this->render('welcome');
     }
 
     public function actionLogin() {
@@ -67,16 +75,13 @@ class AdminController extends Controller {
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            
+
             $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
-            
-            if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+
+            if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
                 return $this->redirect('index.php');
             }
-            
-            //izbriso else dio jer je suvisan... ako gornji uslov nije ispunjen tj. ako je amnistrator nek crta wellcome page
-                //tj. da nastavi sa radom, a ne da vraca ponovo na login
-            
+
             return $this->render('welcome');
             
         } else {

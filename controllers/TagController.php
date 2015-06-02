@@ -49,7 +49,12 @@ class TagController extends Controller
     {
         $searchModel = new TagSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -63,6 +68,11 @@ class TagController extends Controller
      */
     public function actionView($id)
     {
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,6 +86,11 @@ class TagController extends Controller
     public function actionCreate()
     {
         $model = new Tag();
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -95,6 +110,11 @@ class TagController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        
+        $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+        if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
+                return $this->redirect('index.php');
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
