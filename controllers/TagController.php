@@ -93,7 +93,9 @@ class TagController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            
+            return $this->redirect(['index']); //vraca na pocetnu tj. na sve podatke iz tabele a ne na pojedinacni nakon unosa
         } else {
             return $this->render('create', [
                 'model' => $model,
