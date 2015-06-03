@@ -29,14 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             
-            [       //umjesto text boxa sad je padajuca lista
-             'attribute' => 'id',
-             'filter'=>  Tag::get_status(),
-            ],
-        
+                    
             [
              'attribute' => 'name',
-             'filter'=>  Tag::get_status(),
+             'filter'=>  Tag::get_status_name(),
             ],
 
             
