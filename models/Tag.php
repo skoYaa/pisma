@@ -51,4 +51,10 @@ class Tag extends \yii\db\ActiveRecord
     {
         return $this->hasMany(TemplateTag::className(), ['tag_id' => 'id']);
     }
+    
+    public static function get_status() { //kupi sve iz tabele pod kolonom ime
+        $cat=  Tag::find()->all();
+        $catt= \yii\helpers\ArrayHelper::map($cat, 'id', 'name');
+        return $catt;
+    }
 }
