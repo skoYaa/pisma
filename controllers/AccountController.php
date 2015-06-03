@@ -40,26 +40,7 @@ class AccountController extends Controller {
         ];
     }
 
-    public function actionLogin() {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->render('//admin/login');
-        }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->render('index');
-        } else {
-            return $this->render('//admin/login', [
-                        'model' => $model,
-            ]);
-        }
-    }
-
-    public function actionLogout() {
-        Yii::$app->user->logout();
-
-        return $this->render('//admin/index');
-    }
 
     /**
      * Lists all account models.
@@ -111,7 +92,9 @@ class AccountController extends Controller {
         }
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            //return $this->redirect(['view', 'id' => $model->id]);
+            
+            return $this->redirect(['index']); //nakon unosa vraca na pocetak
         } else {
             return $this->render('create', [
                         'model' => $model,
