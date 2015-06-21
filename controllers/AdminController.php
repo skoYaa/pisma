@@ -9,7 +9,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\PaymentMethod;
 use app\models\PaymentMethodSearch;
+use app\models\Account;
 use yii\web\NotFoundHttpException;
+use yii\data\Sort;
 
 class AdminController extends Controller {
 
@@ -53,8 +55,11 @@ class AdminController extends Controller {
     }
 
     public function actionIndex() {
+       /******************************/
+        $korisnik = Account::find()->orderBy('id')->all();
 
-
+       // return $this->render('welcome', ['model' => $korisnik]);
+        /****************************/
 
         if (Yii::$app->user->isGuest) {
             return $this->render('index');
@@ -63,9 +68,11 @@ class AdminController extends Controller {
             if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
                 return $this->redirect('index.php');
             }
-            return $this->render('welcome');
+            //return $this->render('welcome');
+            return $this->render('welcome', ['model' => $korisnik]);
         }
-        return $this->render('welcome');
+        //return $this->render('welcome');
+        return $this->render('welcome', ['model' => $korisnik]);
     }
 
     public function actionLogin() {
