@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PackageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Packages';
+$this->title = 'Paketi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="package-index">
@@ -24,11 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
+            
             'id',
-            'name',
-            'category_amount',
-            'package_price',
+            [ 'attribute' => 'name', 'label'=>'Paket','format' => 'raw', 'value' => function($data){return "<a href=\"?r=package%2Fupdate&id={$data->id}\">{$data->name}</a>";}],
+            [ 'attribute' => 'category_amount', 'label'=>'Količina kategorija'],
+            [ 'attribute' => 'package_price', 'label'=>'Cijena'],
+            //'name',
+            //'category_amount',
+            //'package_price',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
