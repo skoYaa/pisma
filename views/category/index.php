@@ -24,12 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
+            
             'id',
-            'name',
-            'description',
-            'parent_category',
-            'account_id',
+            [ 'attribute' => 'name', 'label'=>'Kategorija','format' => 'raw', 'value' => function($data){return "<a href=\"?r=category%2Fupdate&id={$data->id}\">{$data->name}</a>";}],
+            [ 'attribute' => 'description', 'label'=>'Opis'],
+            [ 'attribute' => 'parent_category', 'label'=>'Nadređena kategorija'],
+            //ispis ko je dodao ili izmjenio kategoriju, a ne ispis njegovog id broja
+            [ 'attribute' => 'account_id', 'label'=>'Dodao/izmjenio', 'value' => 'account.user_name'],
+            //'name',
+            //'description',
+            //'parent_category',
+            //'account_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
