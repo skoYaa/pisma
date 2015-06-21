@@ -36,11 +36,12 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     
-                    ['label' => 'Account', 'url' => ['/account/index']],
-                    ['label' => 'Payment Method', 'url' => ['/payment-method/index']],
+                    ['label' => 'Početna', 'url' => ['/admin/index']],
+                    ['label' => 'Korisnik', 'url' => ['/account/index']],
+                    ['label' => 'Način plaćanja', 'url' => ['/payment-method/index']],
                     ['label' => 'Paketi', 'url' => ['/package/index']],
                     ['label' => 'Kategorije', 'url' => ['/category/index']],
-                    ['label' => 'Template', 'url' => ['/template/index']],
+                    ['label' => 'Pisma', 'url' => ['/template/index']],
                     ['label' => 'Tagovi', 'url' => ['/tag/index']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/admin/login']] :
