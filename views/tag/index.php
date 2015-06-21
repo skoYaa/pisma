@@ -8,7 +8,7 @@ use app\models\Tag;
 /* @var $searchModel app\models\TagSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tag';
+$this->title = 'Tagovi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -31,7 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
             
                     
             [
-             'attribute' => 'name',
+             'attribute' => 'name', 'label'=>'Ime taga','format' => 'raw', 'value' => function($data){return "<a href=\"?r=tag%2Fupdate&id={$data->id}\">{$data->name}</a>";},
+
              'filter'=>  Tag::get_status_name(),
             ],
 

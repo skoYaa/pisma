@@ -24,9 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'payment_method',
+            [ 'attribute' => 'payment_method', 'label'=>'Metod plaćanja','format' => 'raw', 'value' => function($data){return "<a href=\"?r=payment-method%2Fupdate&id={$data->id}\">{$data->payment_method}</a>";}],
+           // 'payment_method',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
