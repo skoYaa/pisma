@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "category".
@@ -17,21 +18,19 @@ use Yii;
  * @property CategoryPurchase[] $categoryPurchases
  * @property CategoryTemplate[] $categoryTemplates
  */
-class Category extends \yii\db\ActiveRecord
-{
+class Category extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'category';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['name', 'description', 'parent_category', 'account_id'], 'required'],
             [['parent_category', 'account_id'], 'integer'],
@@ -42,8 +41,7 @@ class Category extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'name' => 'Name',
@@ -56,24 +54,37 @@ class Category extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAccount()
-    {
+    public function getAccount() {
         return $this->hasOne(Account::className(), ['id' => 'account_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategoryPurchases()
-    {
+    public function getCategoryPurchases() {
         return $this->hasMany(CategoryPurchase::className(), ['category_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategoryTemplates()
-    {
+    public function getCategoryTemplates() {
         return $this->hasMany(CategoryTemplate::className(), ['category_id' => 'id']);
     }
+
+    public static function get_category_name() {
+
+        $cat = Category::find()->orderBy('name')->asArray()->all();
+        $catt = \yii\helpers\ArrayHelper::map($cat, 'id', 'name');
+        return $catt;
+    }
+
+    public static function get_admin_name() {
+        $cat = Category::find()->orderBy('account_id')->asArray()->all();
+
+    
+        $catt = \yii\helpers\ArrayHelper::map($cat, 'account_id', 'account_id' );
+        return $catt;
+    }
+
 }
