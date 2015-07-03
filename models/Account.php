@@ -155,6 +155,7 @@ class Account extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
+        $password = \md5($password);
         return $this->pass === $password;
     }
     
@@ -169,5 +170,10 @@ class Account extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $cat=  Account::find()->all();
         $catt= \yii\helpers\ArrayHelper::map($cat, 'status', 'status');
         return $catt;
+    }
+    
+    public function signUp() {
+        $this->pass = \md5($this->pass);
+        return $this->save();
     }
 }
