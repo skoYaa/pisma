@@ -27,7 +27,7 @@ use yii\grid\GridView;
             'columns' => [
                 //['class' => 'yii\grid\SerialColumn'],
 
-                [ 'attribute' => 'first_name', 'label' => 'Ime'],
+                [ 'attribute' => 'first_name', 'label' => 'Ime','format' => 'raw', 'value' => function($data){return "<a href=\"?r=account%2Fupdate&id={$data->id}\">{$data->user_name}</a>";}],
                 [ 'attribute' => 'last_name', 'label' => 'Prezime'],
                 [ 'attribute' => 'company_name', 'label' => 'Firma'],
                 [ 'attribute' => 'user_name', 'label' => 'Korisničko ime'],
