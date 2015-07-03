@@ -26,13 +26,16 @@ class AdminController extends Controller {
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'denyCallback' => function() {
+                    $this->redirect(['admin/login']);   //prebacuje na login od admin kontrolera
+                },
                 'rules' => [
-                    ['actions' => ['index', 'login'],
+                    ['actions' => ['login'], //da salje direktno na login izbrisati index akciju
                         'allow' => true,
                         'roles' => ['?']
                     ],
                     [
-                        'actions' => ['index', 'logout'],
+                        
                         'allow' => true,
                         'roles' => ['@'],
                     ],
