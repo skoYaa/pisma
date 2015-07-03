@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
@@ -20,7 +21,8 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'description')->textInput(['maxlength' => 50]) ?>
         </div>
         <div class="col-md-6">
-            <?= $form->field($model, 'parent_category')->textInput() ?>
+            <?= $form->field($model, 'parent_category')->dropDownList(ArrayHelper::map(\app\models\Category::find()->all(),'id','name'),['prompt'=>'Izaberi nadredjenu kategoriju']) ?>
+             <?php // $form->field($model, 'parent_category')->dropDownList([1 => "A", 2 => "B", "podkat" => [3 => "C", "pod2" => [5 => "D"]]],['prompt'=>'Izaberi nadredjenu kategoriju']) ?>
 
             <?php
             $model->account_id = Yii::$app->user->identity->id; //pokupi vrijednost id aktivnog accounta
