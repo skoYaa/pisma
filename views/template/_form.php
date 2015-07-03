@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Category;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Template */
@@ -31,7 +33,10 @@ use yii\widgets\ActiveForm;
             ?>
 
             <?= $form->field($model, 'active')->label('Active')->radioList(['0' => 'Neaktivan', '1' => 'Aktivan']); ?>
-            
+            <?php 
+            $kategorija = Category::find()->all();
+            $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
+            echo $form->field($kategorija[0], '[]id')->label('Kategorija')->checkboxList($options, ['unselect'=>NULL]); ?>
          
         </div>
     </div>
