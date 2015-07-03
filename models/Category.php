@@ -32,7 +32,7 @@ class Category extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['name', 'description', 'parent_category', 'account_id'], 'required'],
+            [['name', 'description', 'account_id'], 'required'],
             [['parent_category', 'account_id'], 'integer'],
             [['name', 'description'], 'string', 'max' => 50]
         ];
@@ -80,10 +80,9 @@ class Category extends \yii\db\ActiveRecord {
     }
 
     public static function get_admin_name() {
-        $cat = Category::find()->orderBy('account_id')->asArray()->all();
-
+        $cat = Category::find()->with("account")->orderBy('account_id')->asArray()->all();
     
-        $catt = \yii\helpers\ArrayHelper::map($cat, 'account_id', 'account_id' );
+        $catt = \yii\helpers\ArrayHelper::map($cat, 'account_id', 'account.user_name' );
         return $catt;
     }
 
