@@ -89,7 +89,7 @@ class AccountController extends Controller {
                     return $this->redirect('index.php');
                 }
 
-                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                if ($model->load(Yii::$app->request->post()) && $model->signUp()) {
                     //return $this->redirect(['view', 'id' => $model->id]);
 
                     return $this->redirect(['index']); //nakon unosa vraca na pocetak
