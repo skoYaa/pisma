@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Template;
 use app\models\TemplateSearch;
+use app\models\CategoryTemplate;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -92,8 +93,19 @@ class TemplateController extends Controller
         if($isAdmin=='0'){ //ako nijje admin, baca ga na stranicu za frontend korisnike
                 return $this->redirect('index.php');
         }
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//        die(var_export(Yii::$app->request->post("Category")));
+//        new \app\models\CategoryTemplate()
+//        $cate 
+//        //$model->id;
+            
+          foreach (Yii::$app->request->post("Category") as $category){
+              $model1= new CategoryTemplate();
+              $model1->category_id=$category['id'][0];
+              $model1->template_id=$model->id;
+              $model1->save();
+          }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
