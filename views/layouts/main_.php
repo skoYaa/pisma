@@ -26,8 +26,8 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'Pisma.Ba - Administracija',
-                'brandUrl' => ['/admin/index'],
+                'brandLabel' => 'Pisma.Ba',
+                'brandUrl' => ['site/index'],
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],

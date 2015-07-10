@@ -126,7 +126,7 @@ AppAsset::register($this);
                             <div class="widget">
                                 <h5 class="page-header">Kontakt</h5>
                                 <address>
-                                    <strong>Leftor d.o.o.</strong><br>
+                                    <strong><a href="www.leftor.ba">Leftor d.o.o.</a></strong><br>
                                     Atik mahala 2<br>
                                     75 000 Turla</address>
                                 <p>
@@ -139,11 +139,11 @@ AppAsset::register($this);
                             <div class="widget">
                                 <h5 class="page-header">Linkovi</h5>
                                 <ul class="link-list">
-                                    <li><a href="#">Link 1</a></li>
-                                    <li><a href="#">Link 2</a></li>
-                                    <li><a href="#">Link 3</a></li>
-                                    <li><a href="#">Link 4</a></li>
-                                    <li><a href="#">Link 5</a></li>
+                                    <li><a href="index.php">Naslovna</a></li>
+                                    <li><a href="http://localhost/pisma/web/index.php?r=site/about">O nama</a></li>
+                                    <li><a href="http://localhost/pisma/web/index.php?r=site/contact">Kontakt</a></li>
+                                    <li><a href="#">Registracija</a></li>
+                                    <li><a href="http://localhost/pisma/web/index.php?r=site/login">Login</a></li>
                                 </ul>
                             </div>
                         </div>
