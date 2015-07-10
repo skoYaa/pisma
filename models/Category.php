@@ -85,5 +85,31 @@ class Category extends \yii\db\ActiveRecord {
         $catt = \yii\helpers\ArrayHelper::map($cat, 'account_id', 'account.user_name' );
         return $catt;
     }
+    public function getItems()
+    {
+        
+        //$items = [];
+        return $models = Category::find()->where(['parent_category' => '0'])->all();
+        /*foreach($models as $model) {
+            $items[] = ['label' => $model->name ,'url' => '#','items' => Category::getItemss($model->id),
+    ];
+
+        }
+        return $items;*/
+    }
+        public function getItemss( $string )
+    {
+        
+        
+        return $models = Category::find()->where(['name' => $string])->all();
+
+       
+    }
+     public function getSubCategories($string)
+    {
+  
+        return $models = Category::find()->where(['parent_category' => $string])->all();
+   
+    }
 
 }
