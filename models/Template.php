@@ -98,4 +98,13 @@ class Template extends \yii\db\ActiveRecord
             ],
         ];
     }
+    public function getTemplates($q='')
+    {
+        if($q!=''){
+            return $models = Template::find()->where(['name' => $q])->all();   
+        }
+        return $models = Template::find()->all();
+ 
+    }
+    
 }
