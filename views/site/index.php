@@ -54,7 +54,11 @@ $this->title = 'My Yii Application';
             </div>
         </div>
     </div>
-
+    
+    
+    
+    
+    
     <div class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Paketi</h2>
@@ -63,14 +67,15 @@ $this->title = 'My Yii Application';
             <div class="panel panel-default text-center">
                 <div class="panel-heading">
                     <span class="fa-stack fa-5x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                        <img class="img-responsive center-block" src="img/MiniV1.png" />
                     </span>
                 </div>
                 <div class="panel-body">
-                    <h4>Paket 1</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Kupi</a>
+                    <h4>Mini</h4>
+                    <p>5 kategorija</p>
+                    <p>Aktivan godinu dana</p>
+                    <p>50KM</p>
+                    <a href="#" class="btn btn-primary" style="background-color:#86A6C9">Kupi</a>
                 </div>
             </div>
         </div>
@@ -78,14 +83,15 @@ $this->title = 'My Yii Application';
             <div class="panel panel-default text-center">
                 <div class="panel-heading">
                     <span class="fa-stack fa-5x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                        <img class="img-responsive center-block" src="img/MediV1.png" />
                     </span>
                 </div>
                 <div class="panel-body">
-                    <h4>Paket 2</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Kupi</a>
+                    <h4>Medi</h4>
+                    <p>20 kategorija</p>
+                    <p>Aktivan godinu dana</p>
+                    <p>100KM</p>
+                    <a href="#" class="btn btn-primary" style="background-color:#86A6C9">Kupi</a>
                 </div>
             </div>
         </div>
@@ -93,14 +99,15 @@ $this->title = 'My Yii Application';
             <div class="panel panel-default text-center">
                 <div class="panel-heading">
                     <span class="fa-stack fa-5x">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-book fa-stack-1x fa-inverse"></i>
+                        <img class="img-responsive center-block" src="img/MaxiV1.png" />
                     </span>
                 </div>
                 <div class="panel-body">
-                    <h4>Paket 3</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Kupi</a>
+                    <h4>Maxi</h4>
+                    <p>Neograničen broj kategorija</p>
+                    <p>Aktivan godinu dana</p>
+                    <p>200KM</p>
+                    <a href="#" class="btn btn-primary" style="background-color:#86A6C9" >Kupi</a>
                 </div>
             </div>
         </div>
