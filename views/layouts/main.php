@@ -1,10 +1,14 @@
 <?php
+//namespace app\models;
 
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Category;
+use yii\helpers\Url;
+
 
 AppAsset::register($this);
 ?>
@@ -32,15 +36,15 @@ AppAsset::register($this);
                 <nav class="navbar navbar-fixed-top" role="navigation">
                 <div class="row" style="background-image: url(img/pozadina.png)">
                     <div class="col-md-3">
-                        <a href="http://localhost/pisma/web/index.php?r=site%2Findex"> <img src="img/logo.png" alt="logo"></a>
+                        <a href="http://localhost/pisma/web/index.php?r=user%2Findex"> <img src="img/logo.png" alt="logo"></a>
                     </div>
                     <div class="col-md-3">
                         <div style="float: left; padding-top: 10px;">
                             <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                    <?= Html::beginForm(["user/index"], "GET") ?>
+                                      <input type="search" placeholder="" name="q" value="<?= isset($_GET['q']) ? Html::encode($_GET['q']) : '' ; ?>" />
+                                      <input type="submit" value="Pretrazi" />
+                                    <?= Html::endForm() ?>
                             </form></div>
                     </div>
                     <div class="col-md-5">
@@ -112,14 +116,18 @@ AppAsset::register($this);
                     <?= $content ?></div>
                 <div class="col-md-3" style="float: right">
                     <h3 class="page-header" style="padding-top: 0;">Kategorije</h3>
+
                     <div class="list-group">
-                        <a href="http://localhost/pisma/web/index.php?r=site/kategorija" class="list-group-item">
-                            Kategorija 1
-                        </a>
-                        <a href="http://localhost/pisma/web/index.php?r=site/kategorija" class="list-group-item">Kategorija 2</a>
-                        <a href="http://localhost/pisma/web/index.php?r=site/kategorija" class="list-group-item">Kategorija 3</a>
-                        <a href="http://localhost/pisma/web/index.php?r=site/kategorija" class="list-group-item">Kategorija 4</a>
-                        <a href="http://localhost/pisma/web/index.php?r=site/kategorija" class="list-group-item">Kategorija 5</a>
+                      <?php 
+
+                        $models = Category::getItems();
+
+                        foreach($models as $model) { ?>
+                          <a href="http://localhost/pisma/web/index.php?r=user/kategorija&c=<?=$model->id?>" class="list-group-item"><?= $model->name ?></a>
+                          <?php
+                        }
+                        ?>
+                        
                     </div>
                 </div>
             </div>
