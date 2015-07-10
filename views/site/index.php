@@ -75,7 +75,7 @@ $this->title = 'My Yii Application';
                     <p>5 kategorija</p>
                     <p>Aktivan godinu dana</p>
                     <p>50KM</p>
-                    <a href="#" class="btn btn-primary" style="background-color:#86A6C9">Kupi</a>
+                    <a href="#" class="btn btn-primary btn-lg" style="background-color:#86A6C9">Kupi</a>
                 </div>
             </div>
         </div>
@@ -87,11 +87,11 @@ $this->title = 'My Yii Application';
                     </span>
                 </div>
                 <div class="panel-body">
-                    <h4>Medi</h4>
+                    <h4>Midi</h4>
                     <p>20 kategorija</p>
                     <p>Aktivan godinu dana</p>
                     <p>100KM</p>
-                    <a href="#" class="btn btn-primary" style="background-color:#86A6C9">Kupi</a>
+                    <a href="#" class="btn btn-primary btn-lg" style="background-color:#86A6C9">Kupi</a>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@ $this->title = 'My Yii Application';
                     <p>Neograničen broj kategorija</p>
                     <p>Aktivan godinu dana</p>
                     <p>200KM</p>
-                    <a href="#" class="btn btn-primary" style="background-color:#86A6C9" >Kupi</a>
+                    <a href="#" class="btn btn-primary btn-lg" style="background-color:#86A6C9" >Kupi</a>
                 </div>
             </div>
         </div>
