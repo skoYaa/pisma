@@ -49,28 +49,21 @@ AppAsset::register($this);
                                 <li><a href="index.php">Naslovna</a></li>
                                 <li><a href="http://localhost/pisma/web/index.php?r=site/about">O nama</a></li>
                                 <li><a href="http://localhost/pisma/web/index.php?r=site/contact">Kontakt</a></li>
-                                <li><a href="http://localhost/pisma/web/index.php?r=site/login">Login</a></li>
+                                <?php
+                                if (Yii::$app->user->isGuest) {
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=site/login">Login</a></li>';
+                                } else {
+                                    $ime = Yii::$app->user->identity->user_name;
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=site/logout">Logout(' . $ime . ')</a></li>';
+                                }
+                                ?>
                             </ul>
                         </div>          
-                        <?php /*
-                          NavBar::begin();
-                          echo Nav::widget([
-                          'options' => ['class' => 'nav navbar-nav navbar-right',
-                          ],
-                          'items' => [
-                          ['label' => 'Home', 'url' => ['/site/index']],
-                          ['label' => 'About', 'url' => ['/site/about']],
-                          ['label' => 'Contact', 'url' => ['/site/contact']],
-                          Yii::$app->user->isGuest ?
-                          ['label' => 'Login', 'url' => ['/site/login']] :
-                          ['label' => 'Logout (' . Yii::$app->user->identity->user_name . ')',
-                          'url' => ['/site/logout'],
-                          'linkOptions' => ['data-method' => 'post']],
-                          ],
-                          ]);
-                          NavBar::end(); */
-                        ?></div></div>
-                </nav></header></div> 
+                     </div>
+                </div>
+                </nav>
+            </header>
+        </div> 
 
         <?php /*
           NavBar::begin([
