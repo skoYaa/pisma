@@ -38,6 +38,8 @@ $this->title = 'Login';
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    <div class="alert">
+        <p>Ako nemate nalog <a href="#"><span>REGISTRUJ</span></a> se</p>
+    </div>
     
 </div>

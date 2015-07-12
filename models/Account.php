@@ -162,14 +162,20 @@ class Account extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     
     
     public static function get_admin_name() {   //kupi sve iz tabele pod kolonom administrator
-        $cat=  Account::find()->all();
-        $catt= \yii\helpers\ArrayHelper::map($cat, 'administrator', 'administrator');
-        return $catt;
+        return [
+          0 => 'Ne',
+          1 => 'Da'  
+        ];
+
+        //$cat=  Account::find()->all();
+        //$catt= \yii\helpers\ArrayHelper::map($cat, 'administrator', 'administrator');
+        //return $catt;
     }
     public static function get_status_name() {   //kupi sve iz tabele pod kolonom administrator
-        $cat=  Account::find()->all();
-        $catt= \yii\helpers\ArrayHelper::map($cat, 'status', 'status');
-        return $catt;
+        return [
+          0 => 'Neaktivan',
+          1 => 'Aktivan'  
+        ];
     }
     
     public function signUp() {

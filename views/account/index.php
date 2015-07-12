@@ -45,8 +45,29 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'adress',
             // 'city',
             // 'country',
-            [ 'attribute' => 'status', 'label'=>'Status', 'filter'=> Account::get_status_name()],
-            [ 'attribute' => 'administrator', 'label'=>'Administrator', 'filter'=> Account::get_admin_name()],
+            [
+                'attribute' => 'status', 
+                'label'=>'Status',
+                'content' => function($model) {
+                    if($model->status === 1){
+                        return "Aktivan";
+                    }
+                    else
+                    return "Neaktivan";
+                },
+                'filter'=> Account::get_status_name()
+            ],
+            [ 
+                'attribute' => 'administrator', 
+                'label'=>'Administrator',
+                'content' => function($model){
+                    if($model->administrator === 1){
+                        return "Da";
+                    }
+                    else
+                    return "Ne";
+                },
+                'filter'=> Account::get_admin_name()],
        
             // 'pdv_number',
                         
