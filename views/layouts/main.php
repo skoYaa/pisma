@@ -55,6 +55,12 @@ AppAsset::register($this);
                                 <li><a href="http://localhost/pisma/web/index.php?r=site/contact">Kontakt</a></li>
                                 <?php
                                 if (Yii::$app->user->isGuest) {
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=account/create">Registracija</a></li>';
+                                } else {
+                                    $ime = Yii::$app->user->identity->user_name;
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=purchase/create">kupovina</a></li>';
+                                }
+                                if (Yii::$app->user->isGuest) {
                                     echo '<li><a href="http://localhost/pisma/web/index.php?r=site/login">Login</a></li>';
                                 } else {
                                     $ime = Yii::$app->user->identity->user_name;

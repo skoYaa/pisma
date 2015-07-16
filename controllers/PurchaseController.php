@@ -14,7 +14,16 @@ use yii\filters\VerbFilter;
  */
 class PurchaseController extends Controller
 {
-    public $layout = 'main_';
+    
+    /*$isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+            if($isAdmin=='1'){ //ako je admin, baca ga na admin kontroler
+                public $layout = 'main_';
+            ;
+            }
+            else {
+                        public $layout = 'main';
+                    
+                }  */
     
     public function behaviors()
     {
@@ -66,12 +75,23 @@ class PurchaseController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
+        } else { 
+            $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
+            if($isAdmin=='1'){ //ako je admin, baca ga na admin kontroler
+                return $this->render('create', [
+                        'model' => $model,
             ]);
-        }
-    }
+            }
+            else {
+                        return $this->render('create(user)', [
+                                'model' => $model,
+                    ]);
+                    
+                }   
+                   return $this->render('create(user)', [
+                        'model' => $model,
+            ]);     
+    }}
 
     /**
      * Updates an existing Purchase model.

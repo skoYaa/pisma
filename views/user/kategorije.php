@@ -16,8 +16,9 @@ $this->title = 'Kategorije';
 
 
         <div class="col-lg-9">
+          class="block-title align-center gray well well-small"
             <h2 class="page-header">Podkategorije</h2>
-            <div class="row">
+            <div class="row" ><div class="block-title align-center gray well well-small">
                 <?php
 
                  //$models= $kat;
@@ -29,38 +30,43 @@ $this->title = 'Kategorije';
                      <?php }
                
                 ?>
-            </div>
+            </div></div>
             <div class="row">
                 <div class="col-lg-12" >
                     <h2 class="page-header">Pisma</h2>
+                    <h5 class="block-title align-center gray well well-small" >Pisma</h5>
                     <div class="row" style="padding-top: 40px;">
 
-               <div class="col-md-3 col-sm-6">
-                <div class="panel panel-default text-center">
-                    <div class="panel-heading">
-                        <span class="fa-stack fa-5x">
-                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fa fa-envelope-square fa-stack-1x fa-inverse"></i>
-                        </span>
+                    <div class="views-row views-row-1">
+                    <div class="thumbnail no-padding clearfix margin-bottom-big">
+                  <div class="clearfix border-bottom no-margin-bottom padding project-header">
+                    <div class="pull-right">
                     </div>
-                    <div class="panel-body">
-                        <h4>Pismo</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Vise</a>
+                    <h4 class="template-list-title"><a href="?r=user/say&message=Hello+World">Basic Resume</a></h4>
+                     <p>This is a close (not exact) copy of my engineering resume.
+                </p><p>Resumes are made to be very simple, in fact, they should only be one page for professional positions. In general, a resume is used to get a 'bite' from a company.  The company you apply at will use the resume as a disqualifer so that they don't need to look through so many applications for a position.
+                </p><p>I hope this works well for you!  If this resume helps you to get a job, please consider donating a small sum to help me pay for college.<br>
+                Paypal: bruce [dot] schaller [at] gmail [dot] com</p>
+                   </div>
+                  
+                  <div class="clearfix padding border-bottom no-margin-bottom body">
+                    
+                    <div><strong class="views-label views-label-author">Author: </strong><span class="field-content">bruceschaller</span></div>    
+                    <div><strong class="views-label views-label-field-template-category">Category: </strong>Personal: Correspondence</div>    
+            
+                 </span></div>    
+                  </div>
+                  
+                </div>
+                  </div>
+
                     </div>
                 </div>
-            </div>
-                    </div>
-                </div>
+
+
+
             </div>
         </div>
-            
-            
-                
-                
-                </div>
-            
-            
-            </div>
+  </div>
        
    

@@ -130,12 +130,7 @@ function checkboxlimit(checkgroup, limit){
                     <?php
                 }
                 ?>
-                <form action="checkbox.php" method="post">
-                    <input type="hidden" name="purchaseid" value=<?=$this->$id ?>>
-                    <input type="checkbox" name="chk1[}"value="Vineet">Vineet<br />
-                    <br>
-                    <input type="submit" name="submit" value"Submit">
-                </form>
+                
 
                 </form>
 

@@ -70,9 +70,9 @@ class UserController extends Controller
                     $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
                     if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
                         //return $this->redirect(['//user/index.php']);
-                        return $this->render('//account/index');
+                        return $this->render('index');
                     }
-                    return $this->render('index');
+                    return $this->render('admin/index');
                 }
                 return $this->render('index');
         
@@ -112,6 +112,10 @@ class UserController extends Controller
         Yii::$app->user->logout();
 
         return $this->render('index_begin.php');
+    }
+    public function actionSay($message = 'Hello')
+    {
+        return $this->render('say', ['message' => $message]);
     }
 
     public function actionContact()
