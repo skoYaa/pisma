@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Template;
 use yii\web\NotFoundHttpException;
 
 
@@ -114,8 +115,10 @@ class UserController extends Controller
         return $this->render('index_begin.php');
     }
     public function actionSay($message = 'Hello')
-    {
-        return $this->render('say', ['message' => $message]);
+        
+    {   $ime = $_GET['message'];
+        $model=Template::getItemss($ime);
+        return $this->render('say', ['model'=>$model ]);
     }
 
     public function actionContact()

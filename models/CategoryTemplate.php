@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Category;
 
 /**
  * This is the model class for table "category_template".
@@ -61,5 +62,13 @@ class CategoryTemplate extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+     public function getCategoryfromTemplate($string)
+    {
+  
+        $models = CategoryTemplate::find()->where(['template_id' => $string])->one();
+        $models1= new Category();
+        $models1 = Category::find()->where(['id' => $models->category_id])->one();
+    return $models1->name;
     }
 }

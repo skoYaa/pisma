@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use app\models\Category;
+use app\models\Template;
 $this->title = 'Kategorije';
 ?>
 
@@ -15,10 +16,10 @@ $this->title = 'Kategorije';
             </ol></div>
 
 
-        <div class="col-lg-9">
-          class="block-title align-center gray well well-small"
-            <h2 class="page-header">Podkategorije</h2>
-            <div class="row" ><div class="block-title align-center gray well well-small">
+        <div class="col-md-9">
+            <h2 class="page-header">Categorija: <?php $var= Category::tempCategory($_GET['c']); echo $var->name ;?></h2>
+            <h2 class="page-header">Podkategorije:</h2>
+            <div class="row" >
                 <?php
 
                  //$models= $kat;
@@ -30,32 +31,35 @@ $this->title = 'Kategorije';
                      <?php }
                
                 ?>
-            </div></div>
+            </div>
             <div class="row">
                 <div class="col-lg-12" >
-                    <h2 class="page-header">Pisma</h2>
-                    <h5 class="block-title align-center gray well well-small" >Pisma</h5>
+                    <h2 class="page-header">Pisma:</h2>
+                    <!--<h5 class="block-title align-center gray well well-small" ></h5> -->
                     <div class="row" style="padding-top: 40px;">
 
                     <div class="views-row views-row-1">
-                    <div class="thumbnail no-padding clearfix margin-bottom-big">
-                  <div class="clearfix border-bottom no-margin-bottom padding project-header">
-                    <div class="pull-right">
-                    </div>
-                    <h4 class="template-list-title"><a href="?r=user/say&message=Hello+World">Basic Resume</a></h4>
-                     <p>This is a close (not exact) copy of my engineering resume.
-                </p><p>Resumes are made to be very simple, in fact, they should only be one page for professional positions. In general, a resume is used to get a 'bite' from a company.  The company you apply at will use the resume as a disqualifer so that they don't need to look through so many applications for a position.
-                </p><p>I hope this works well for you!  If this resume helps you to get a job, please consider donating a small sum to help me pay for college.<br>
-                Paypal: bruce [dot] schaller [at] gmail [dot] com</p>
-                   </div>
+                    
+                  
+                    <?php
+                    $models = Template::getItems();
+        
+                foreach($models as $model) { 
+                   ?>
+                   <div class="thumbnail no-padding clearfix margin-bottom-big">
+                   <div class="clearfix border-bottom no-margin-bottom padding project-header">
+                    <h4 class="template-list-title"><a href="?r=user/say&message=<?= $model->name ?>"><?= $model->name ?></a></h4>
+                     <p><?= $model->description ?> </p> 
+                </div> 
+                   
                   
                   <div class="clearfix padding border-bottom no-margin-bottom body">
                     
-                    <div><strong class="views-label views-label-author">Author: </strong><span class="field-content">bruceschaller</span></div>    
-                    <div><strong class="views-label views-label-field-template-category">Category: </strong>Personal: Correspondence</div>    
+                    <div><strong class="views-label views-label-author">Autor: </strong><span class="field-content"><?= $model->account_id ?></span></div>    
+                    <div><strong class="views-label views-label-field-template-category">Datum: </strong><?= $model->updated_at ?></div>    
             
-                 </span></div>    
-                  </div>
+                 </div>    
+                  </div> <?php } ?>
                   
                 </div>
                   </div>

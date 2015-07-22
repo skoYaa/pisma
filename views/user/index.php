@@ -12,23 +12,27 @@ use app\models\Category;
 <script>
 jQuery(function($) {
 $('.slider').sss();
+$("#test").slideUp(1000).delay(1000).slideDown(1000);
+
 });
 </script>
+
+        
 </head>
 <?php
 
 /* @var $this yii\web\View */
 $this->title = 'My Yii Application';
 ?>
-<div class="container" style="padding-top: 40px;">
+<div class="container" style="padding-top: 40px;" >
     <?php
     if(!isset($_GET['q'])){ ?>
-    <div class="row">
+    <div  class="row">
         <div class="col-md-9">
             <div class="slider">
                 <img src="img/1.jpg" />
                 <img src="img/2.jpg" />
-                <img src="img/3.jpg" />
+                <img src="img/1.jpg" />
             </div>
         </div></div>
         <?php
@@ -56,8 +60,8 @@ $this->title = 'My Yii Application';
                     </div>
                     <div class="panel-body">
                         <h4><?= $model->name ?></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">Vise</a>
+                        <p><?=  $model->description ?></p>
+                        <a href="http://localhost/pisma/web/index.php?r=user/kategorija&c=<?= $model->id?>" class="btn btn-primary">Vise</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +72,7 @@ $this->title = 'My Yii Application';
         ?>
     </div>
 
-    <div class="row">
+    <div id="test" class="row">
         <div class="col-lg-12">
             <h2 class="page-header">Paketi</h2>
         </div>
@@ -118,6 +122,5 @@ $this->title = 'My Yii Application';
             </div>
         </div>
     </div></div>
-    <?php
 
-    ?>
+    

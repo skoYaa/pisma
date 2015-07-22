@@ -89,7 +89,7 @@ class Category extends \yii\db\ActiveRecord {
     {
         
         //$items = [];
-        return $models = Category::find()->where(['parent_category' => '0'])->all();
+        return $models = Category::find()->where(['parent_category' => 0])->orWhere(['parent_category' => null])->all();
         /*foreach($models as $model) {
             $items[] = ['label' => $model->name ,'url' => '#','items' => Category::getItemss($model->id),
     ];
@@ -109,6 +109,12 @@ class Category extends \yii\db\ActiveRecord {
     {
   
         return $models = Category::find()->where(['parent_category' => $string])->all();
+   
+    }
+     public function tempCategory($string)
+    {
+  
+        return $models = Category::find()->where(['id' => $string])->one();
    
     }
 

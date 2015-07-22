@@ -10,6 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="account-form">
 
+
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-md-6">
@@ -24,12 +25,13 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'pass')->passwordInput(['maxlength' => 50]) ?>
 
-            <?= $form->field($model, 'phone')->textInput(['maxlength' => 50]) ?>
-
+            <?= $form->field($model, 'repeatpassword')->passwordInput(['maxlength' => 50]) ?>
+           
 
         </div>
 
         <div class="col-md-6">
+            <?= $form->field($model, 'phone')->textInput(['maxlength' => 50]) ?>
 
             <?= $form->field($model, 'adress')->textInput(['maxlength' => 50]) ?>
 

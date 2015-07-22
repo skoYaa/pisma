@@ -106,5 +106,26 @@ class Template extends \yii\db\ActiveRecord
         return $models = Template::find()->all();
  
     }
+    public function getItems()
+    {
+        return $models = Template::find()->all();
+        //$items = [];
+        //return $models = Template::find()->where(['parent_category' => [0]])->all();
+        /*foreach($models as $model) {
+            $items[] = ['label' => $model->name ,'url' => '#','items' => Category::getItemss($model->id),
+    ];
+
+        }
+        return $items;*/
+    }
+        public function getItemss( $string )
+    {
+        
+        
+        return $models = Template::find()->where(['name' => $string])->one();
+
+       
+    }
+     
     
 }

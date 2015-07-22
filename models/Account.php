@@ -31,6 +31,8 @@ class Account extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     /**
      * @inheritdoc
      */
+    public $repeatpassword;
+
     public static function tableName()
     {
         return 'account';
@@ -42,9 +44,10 @@ class Account extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['user_name', 'pass', 'first_name', 'last_name', 'email', 'phone', 'adress', 'city', 'country'], 'required'],
+            [['user_name', 'pass', 'first_name', 'last_name', 'email', 'phone', 'adress', 'city', 'country','repeatpassword'], 'required'],
             [['status', 'administrator', 'pdv_number'], 'integer'],
-            [['user_name', 'pass', 'first_name', 'last_name', 'email', 'phone', 'adress', 'city', 'country', 'company_name'], 'string', 'max' => 50]
+            [['user_name', 'pass', 'first_name', 'last_name', 'email', 'phone', 'adress', 'city', 'country', 'company_name'], 'string', 'max' => 50],
+            ['repeatpassword', 'compare', 'compareAttribute' => 'pass']
         ];
     }
 

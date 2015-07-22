@@ -11,25 +11,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
-<script type="text/javascript">
 
-function checkboxlimit(checkgroup, limit){
-    var checkgroup=checkgroup
-    var limit=limit
-    for (var i=0; i<checkgroup.length; i++){
-        checkgroup[i].onclick=function(){
-            var checkedcount=0
-            for (var i=0; i<checkgroup.length; i++)
-                checkedcount+=(checkgroup[i].checked)? 1 : 0
-            if (checkedcount>limit){
-                alert("You can only select a maximum of "+limit+" checkboxes")
-                this.checked=false
-            }
-        }
-    }
-}
-
-</script>
 
 <div class="purchase-form">
 
@@ -57,20 +39,20 @@ function checkboxlimit(checkgroup, limit){
 
 
 
-
+<div class="target">
                 <?php 
                 use app\models\Package;
                 $packages= Package::find()->all();
 
             //use yii\helpers\ArrayHelper;
-                $listData=ArrayHelper::map($packages,'id','name','package_price');
+                $listData=ArrayHelper::map($packages,'id','name');
 
                 echo $form->field($model, 'package_id')->dropDownList(
                     $listData, 
-                    ['prompt'=>'Izaberi...']); 
+                    ['prompt'=>'']); 
                     ?>
 
-
+</div>
                     <?php
             //use app\models\User;
             $model->purchase_date = 'NOW()'; //pokupi vrijednost 
@@ -107,39 +89,27 @@ function checkboxlimit(checkgroup, limit){
 
             <?= $form->field($model, 'purchase_price')->textInput() ?>
 
-            <?php 
-/*
-            $pack= Package::find()->where(['id'=> $model->package_id])->one();
-
-            for($x=0; $x< $pack; $x++){
-                ?>
-                <input type="text" name="name"><br>
-                <?php
-            } */
-            ?>
             
+             <div> <input class="target1" type="text" name="country" value="Cena" readonly><br></div>
+         
+                 
                 <p>Izaberi kategorije ispod:</p>
-                <form id="world" name="world">
+                <form class="target">
 
                 <?php
                 use app\models\Category;
                 $categories2 = Category::find()->all();
                 foreach ($categories2 as $cat) {
                     ?>
-                    <input type="checkbox" name= "categories"/> <?= $cat->name ?><br />
+                    <input type="checkbox" name= "categories" class="group1"/> <?= $cat->name ?><br />
                     <?php
                 }
                 ?>
                 
+                <button type="submit" form="form1" value="Submit" id='restart'>Reset</button>
 
                 </form>
 
-                <script type="text/javascript">
-
-                //Syntax: checkboxlimit(checkbox_reference, limit)
-                checkboxlimit(document.forms.world.categories, 3)
-
-                </script>
             
         <p></p>
         <div class="form-group">
@@ -148,3 +118,89 @@ function checkboxlimit(checkgroup, limit){
 
                 <?php ActiveForm::end(); ?>
 </div>
+<script src="http://code.jquery.com/jquery.js"></script>
+
+<script>
+    $(document).ready(function(){
+        
+    alert('radi'); 
+    $( ".target" ).change(function() {
+        //alert('radi2');
+        var str = "";
+        var str1="";
+        $( "select option:selected" ).each(function() {
+          str = $(this).text();
+          console.log(str);
+        });
+
+        var selected = $(this).val()
+
+        $.ajax({
+            method: "GET",
+            url: "/pisma/web/index.php?r=user/index",
+            data: {
+              id: selected 
+            },
+            success: function(data) {
+              str = data;
+            }
+          });
+         <?php
+        foreach ($categories2 as $cat) {
+          $moje = $cat->name;
+          ?>
+            //alert(<?= $moje ?> ); 
+            <?php
+        } ?>
+
+
+
+
+        //alert( "Handler for .change() called."+ str);
+        $(".target1").val(str);
+    
+        //$(".target1").val($pack->package_price);
+        
+   });
+    // get box count///////////////////////////////////////
+  var count = 0;
+  var checked = 0;
+  function countBoxes() { 
+    count = $("input[type='checkbox']").length;
+    console.log(count);
+  }
+  
+  countBoxes();
+  $(":checkbox").click(countBoxes);
+  
+  // count checks
+
+  function countChecked() {
+      if(checked+5>=count){
+          alert("nemozes vise checkirati");
+           $("input.group1").attr("disabled", true);
+           
+      }else{
+         $("input.group1").removeAttr("disabled"); 
+      }
+    
+    checked = $("input:checked").length; 
+    console.log(checked);
+      
+          
+    
+  }
+  
+  countChecked();
+  $(":checkbox").click(countChecked);
+  $("#restart").click(function(){
+    $("input.group1").removeAttr("disabled"); 
+    $('input.group1').attr('checked', false);
+    checked = 0;
+  });
+  
+  
+});
+
+
+</script>
