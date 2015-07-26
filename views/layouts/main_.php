@@ -27,7 +27,7 @@ AppAsset::register($this);
         <?php
             NavBar::begin([
                 'brandLabel' => 'Pisma.Ba',
-                'brandUrl' => ['site/index'],
+                'brandUrl' => ['user/index'],
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
@@ -53,7 +53,7 @@ AppAsset::register($this);
             NavBar::end();
         ?>
 
-        <div class="container">
+        <div class="container" style="padding-top: 70px">
             <?= Breadcrumbs::widget([
                 'homeLink' => ['label' => 'Administracija',
                                'url' => ['/admin/index'] ],

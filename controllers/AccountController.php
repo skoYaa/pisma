@@ -50,7 +50,7 @@ class AccountController extends Controller {
 
                 $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
                 if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
-                    return $this->redirect('index.php');
+                    return $this->redirect('index.php?r=user');
                 }
 
                 return $this->render('index', [
@@ -68,7 +68,7 @@ class AccountController extends Controller {
 
                 $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
                 if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
-                    return $this->redirect('index.php');
+                    return $this->redirect('index.php?r=user');
                 }
 
                 return $this->render('view', [
@@ -86,7 +86,7 @@ class AccountController extends Controller {
 
                 $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
                 if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
-                    return $this->redirect('index.php');
+                    return $this->redirect('index.php?r=user');
                 }
 
                 if ($model->load(Yii::$app->request->post()) && $model->signUp()) {
@@ -111,7 +111,7 @@ class AccountController extends Controller {
 
                 $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
                 if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
-                    return $this->redirect('index.php');
+                    return $this->redirect('index.php?r=user');
                 }
 
                 if ($model->load(Yii::$app->request->post()) && $model->save()) {

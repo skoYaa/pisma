@@ -39,7 +39,7 @@ use yii\grid\GridView;
     </div>
 
     <div class="col-md-5">
-        <h3>Zadnje naruđbe</h3>
+        <h3>Zadnje narudžbe</h3>
         <?=
         GridView::widget([
             'dataProvider' => $dataProvider2,

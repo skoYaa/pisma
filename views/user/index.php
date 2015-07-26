@@ -1,4 +1,4 @@
-<?
+<?php
 use app\models\Template;
 use app\models\Category;
 ?>
@@ -34,7 +34,7 @@ $this->title = 'My Yii Application';
                 <img src="img/2.jpg" />
                 <img src="img/1.jpg" />
             </div>
-        </div></div>
+        
         <?php
             } ?>
     <div class="row" style="padding-top: 40px;">
@@ -70,7 +70,10 @@ $this->title = 'My Yii Application';
         
     }
         ?>
-    </div>
+    </div></div>
+        <div class="col-md-3">
+            <?php echo $this->render('lista_kategorija'); ?>
+        </div></div>
 
     <div id="test" class="row">
         <div class="col-lg-12">
