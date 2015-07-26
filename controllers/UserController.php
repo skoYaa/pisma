@@ -168,6 +168,12 @@ class UserController extends Controller
         return $this->render('kategorije');
     }
 
+     public function actionPozivanje() {
+   
+      return 'ok';
+          
+    }
+
     
    
 }

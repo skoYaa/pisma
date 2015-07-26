@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
 
 
 
-<div class="target">
+<div id='ajaxButton'>
                 <?php 
                 use app\models\Package;
                 $packages= Package::find()->all();
@@ -106,7 +106,7 @@ use yii\widgets\ActiveForm;
                 }
                 ?>
                 
-                <button type="submit" form="form1" value="Submit" id='restart'>Reset</button>
+                <button type="submit" form="form1" value="Submit" onclick="showCustomer()" id="restart">Reset</button>
 
                 </form>
 
@@ -118,12 +118,14 @@ use yii\widgets\ActiveForm;
 
                 <?php ActiveForm::end(); ?>
 </div>
-<script src="http://code.jquery.com/jquery.js"></script>
+
+<script src="http://code.jquery.com/jquery-latest.js"
+        type="text/javascript"></script>
 
 <script>
     $(document).ready(function(){
         
-    alert('radi'); 
+    //alert('radi'); 
     $( ".target" ).change(function() {
         //alert('radi2');
         var str = "";
@@ -134,7 +136,7 @@ use yii\widgets\ActiveForm;
         });
 
         var selected = $(this).val()
-
+/*
         $.ajax({
             method: "GET",
             url: "/pisma/web/index.php?r=user/index",
@@ -144,14 +146,8 @@ use yii\widgets\ActiveForm;
             success: function(data) {
               str = data;
             }
-          });
-         <?php
-        foreach ($categories2 as $cat) {
-          $moje = $cat->name;
-          ?>
-            //alert(<?= $moje ?> ); 
-            <?php
-        } ?>
+          }); */
+
 
 
 
@@ -202,5 +198,42 @@ use yii\widgets\ActiveForm;
   
 });
 
+//'<?php echo Yii::$app->request->baseUrl. '/user/pozivanje' ?>'
+var httpRequest;
+  document.getElementById("ajaxButton").onchange = function() { makeRequest('test.html'); };
 
+  function makeRequest(url) {
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+      httpRequest = new XMLHttpRequest();
+    } else if (window.ActiveXObject) { // IE
+      try {
+        httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+      } 
+      catch (e) {
+        try {
+          httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+        } 
+        catch (e) {}
+      }
+    }
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    httpRequest.open('GET', url);
+    httpRequest.send();
+  }
+
+  function alertContents() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+   
 </script>
