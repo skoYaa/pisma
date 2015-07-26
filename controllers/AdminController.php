@@ -30,7 +30,7 @@ class AdminController extends Controller {
                     $this->redirect(['admin/login']);   //prebacuje na login od admin kontrolera
                 },
                 'rules' => [
-                    ['actions' => ['login'], //da salje direktno na login izbrisati index akciju
+                    ['actions' => ['login','index'], //da salje direktno na login izbrisati index akciju
                         'allow' => true,
                         'roles' => ['?']
                     ],
@@ -68,12 +68,12 @@ class AdminController extends Controller {
         $searchModel1= new AccountSearch();
         $dataProvider1 = $searchModel1->search(Yii::$app->request->queryParams);
         $dataProvider1->sort = ['defaultOrder' => ['id' => 'DESC']];
-        $dataProvider1->pagination = ['pageSize' => 5];
+        $dataProvider1->pagination = ['pageSize' => 10];
         
         $searchModel2 = new PurchaseSearch();
         $dataProvider2 = $searchModel2->search(Yii::$app->request->queryParams);
         $dataProvider2->sort = ['defaultOrder' => ['id' => 'DESC']];
-        $dataProvider2->pagination = ['pageSize' => 5];
+        $dataProvider2->pagination = ['pageSize' => 10];
         /*         * ************************* */
 
         if (Yii::$app->user->isGuest) {
@@ -81,7 +81,7 @@ class AdminController extends Controller {
         } else {
             $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
             if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
-                return $this->redirect('index.php');
+                return $this->redirect('index.php?r=user');
             }
            
             return $this->render('welcome', ['dataProvider1' => $dataProvider1, 'dataProvider2' => $dataProvider2,]);
@@ -101,7 +101,7 @@ class AdminController extends Controller {
             $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
 
             if ($isAdmin == '0') { //ako nijje admin, baca ga na stranicu za frontend korisnike
-                return $this->redirect('index.php');
+                return $this->redirect('index.php?r=user');
             }
 
             /* umjesto render welcome, radimo redirect na gornju akciju index,

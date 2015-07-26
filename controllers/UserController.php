@@ -26,7 +26,7 @@ class UserController extends Controller
             'access' => [
                 'class' => AccessControl::className(),
                 
-                'only' => ['index','contact','about','login','logout','create'],
+                //'only' => ['index','contact','about','login','logout','create'],
                 'rules' => [
                     ['actions' => ['index','login','create','about','contact'],
                      'allow' => true,
@@ -40,12 +40,7 @@ class UserController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+            
         ];
     }
 
@@ -73,7 +68,7 @@ class UserController extends Controller
                         //return $this->redirect(['//user/index.php']);
                         return $this->render('index');
                     }
-                    return $this->render('admin/index');
+                    return $this->render('index');
                 }
                 return $this->render('index');
         
@@ -97,7 +92,7 @@ class UserController extends Controller
             else {
                 return $this->render('index');
             }
-            
+                       
             
             
             return $this->goBack();
@@ -112,7 +107,7 @@ class UserController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->render('index_begin.php');
+        return $this->render('index');
     }
     public function actionSay($message = 'Hello')
         

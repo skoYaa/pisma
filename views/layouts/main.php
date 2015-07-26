@@ -34,7 +34,7 @@ AppAsset::register($this);
 
             <header>
                 <nav class="navbar navbar-fixed-top" role="navigation">
-                <div class="row" style="background-image: url(img/pozadina.png)">
+                <div class="row" style="background-image: url(img/pozadina.png); background-repeat: no-repeat; background-color: buttonface">
                     <div class="col-md-3">
                         <a href="http://localhost/pisma/web/index.php?r=user%2Findex"> <img src="img/logo.png" alt="logo"></a>
                     </div>
@@ -50,21 +50,21 @@ AppAsset::register($this);
                     <div class="col-md-5">
                         <div class="navbar-header navbar-right" style="font-size: 18px; padding-top: 10px; ">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.php">Naslovna</a></li>
-                                <li><a href="http://localhost/pisma/web/index.php?r=site/about">O nama</a></li>
-                                <li><a href="http://localhost/pisma/web/index.php?r=site/contact">Kontakt</a></li>
+                                <li><a href="http://localhost/pisma/web/index.php?r=user/index">Naslovna</a></li>
+                                <li><a href="http://localhost/pisma/web/index.php?r=user/about">O nama</a></li>
+                                <li><a href="http://localhost/pisma/web/index.php?r=user/contact">Kontakt</a></li>
                                 <?php
                                 if (Yii::$app->user->isGuest) {
                                     echo '<li><a href="http://localhost/pisma/web/index.php?r=user/create">Registracija</a></li>';
                                 } else {
                                     $ime = Yii::$app->user->identity->user_name;
-                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=purchase/create">kupovina</a></li>';
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=purchase/create">Kupovina</a></li>';
                                 }
                                 if (Yii::$app->user->isGuest) {
-                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=site/login">Login</a></li>';
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=user/login">Login</a></li>';
                                 } else {
                                     $ime = Yii::$app->user->identity->user_name;
-                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=site/logout">Logout(' . $ime . ')</a></li>';
+                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=user/logout">Logout(' . $ime . ')</a></li>';
                                 }
                                 ?>
                             </ul>
@@ -113,22 +113,7 @@ AppAsset::register($this);
                     ])
                     ?>
                     <?= $content ?></div>
-                <div class="col-md-3" style="float: right">
-                    <h3 class="page-header" style="padding-top: 0;">Kategorije</h3>
-
-                    <div class="list-group">
-                      <?php 
-
-                        $models = Category::getItems();
-
-                        foreach($models as $model) { ?>
-                          <a href="http://localhost/pisma/web/index.php?r=user/kategorija&c=<?=$model->id?>" class="list-group-item"><?= $model->name ?></a>
-                          <?php
-                        }
-                        ?>
-                        
-                    </div>
-                </div>
+                
             </div>
         </div>
 
