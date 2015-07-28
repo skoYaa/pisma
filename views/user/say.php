@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use app\models\CategoryTemplate;
+use app\models\Tag;
 ?>
 
 <html>
@@ -24,17 +25,19 @@ use app\models\CategoryTemplate;
     <div class="pull-right"><img class="thumbnail" src="http://templates.openoffice.org/sites/default/files/styles/thumbnail/public/template_images/1312_thumbnail.png?itok=FOt6iU9l"></div>
     <div><strong class="views-label views-label-author">Autor: </strong><span class="field-content"><?= $model->account_id?></span></div>    
      <div><strong class="views-label views-label-field-template-category">Category: </strong><?php echo $ime=CategoryTemplate::getCategoryfromTemplate($model->id); ?></div>   
-    <div><strong class="views-label views-label-field-template-application">Application: </strong>Writer</div>
-    <div><strong class="views-label views-label-field-template-license">License: </strong><span class="field-content"> <p>This template is hereby under the GPL, version 2 or later.  Even so, please contribute to the author if this helps you get a job.</p>
+    <div><strong class="views-label views-label-field-template-application">Application: </strong>PISMA.BA</div>
+    <div><strong class="views-label views-label-field-template-license">Tagovi: </strong><span class="field-content"> 
+      <p>   
+        <?php $model2 = Tag::getTags($model->id) ;
+          foreach ($model2 as $mod) { ?>
+          <button type="button" class="btn btn-default"><?= $mod->name ?></button>
+          <?php
+          }
+
+      ?></p>
  </span></div>    
-  </div>
+  </div> 
   
-  <div class="padding">
-    <i class="icon icon-calendar"></i> 11 April, 2009 - 00:48    <!-- - <i class="icon icon-ok-sign"></i>  -->
-      <i class="icon icon-download"></i> <b>Downloads:</b>
-      Week: 2.996      - Month: 12.212      - Year: 157.059    
-         - <a target="_blank" href="http://sourceforge.net/projects/aoo-templates/files/1312/stats/timeline?dates=2015-07-01+to+2015-07-15">Timeline</a> 
-  </div>
 
 </div>
   </div>

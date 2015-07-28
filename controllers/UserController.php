@@ -34,7 +34,7 @@ class UserController extends Controller
                         ],
         
                     [
-                        'actions' => ['index','contact','about','logout','access'],
+                        'actions' => ['index','contact','about','logout','access','kategorija','say'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

@@ -6,6 +6,8 @@ use Yii;
 use app\models\Template;
 use app\models\TemplateSearch;
 use app\models\CategoryTemplate;
+use app\models\Tag;
+use app\models\TemplateTag;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -103,6 +105,12 @@ class TemplateController extends Controller
           foreach (Yii::$app->request->post("Category") as $category){
               $model1= new CategoryTemplate();
               $model1->category_id=$category['id'][0];
+              $model1->template_id=$model->id;
+              $model1->save();
+          }
+          foreach (Yii::$app->request->post("Tag") as $tag){
+              $model1= new TemplateTag();
+              $model1->tag_id=$tag['id'][0];
               $model1->template_id=$model->id;
               $model1->save();
           }

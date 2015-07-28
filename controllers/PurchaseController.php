@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Purchase;
 use app\models\PurchaseSearch;
+use app\models\CategoryPurchase;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -74,7 +75,14 @@ class PurchaseController extends Controller
         $model = new Purchase();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+             foreach (Yii::$app->request->post("Category") as $category){
+              $model1= new CategoryPurchase();
+              $model1->category_id=$category['id'][0];
+              $model1->purchase_id=$model->id;
+              $model1->save();
+          }
+            return $this->redirect(['//user/index.php']);
         } else { 
             $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
             if($isAdmin=='1'){ //ako je admin, baca ga na admin kontroler

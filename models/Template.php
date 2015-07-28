@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "template".
@@ -118,7 +119,23 @@ class Template extends \yii\db\ActiveRecord
         }
         return $items;*/
     }
-        public function getItemss( $string )
+    public function getItemsKategorija($string)
+    {
+        $modelic = CategoryTemplate::find()->where(['category_id' => $string]) ->all();
+        $ids = ArrayHelper::getColumn($modelic, 'template_id');
+        return $models = Template::find()->where(['in','id',$ids])->all();
+
+
+    }
+     public function getItemsTag($string)
+    {
+        $modelic = TemplateTag::find()->where(['tag_id' => $string]) ->all();
+        $ids = ArrayHelper::getColumn($modelic, 'template_id');
+        return $models = Template::find()->where(['in','id',$ids])->all();
+      
+
+    }
+    public function getItemss( $string )
     {
         
         

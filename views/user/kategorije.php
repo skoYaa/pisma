@@ -40,9 +40,17 @@ $this->title = 'Kategorije';
 
                     
                     
-                  
                     <?php
-                    $models = Template::getItems();
+                    if(isset($_GET['c'])) {
+                      $var=$_GET['c'];
+                      $models = Template::getItemsKategorija($var);
+                    }elseif(isset($_GET['t'])) {
+                      $var=$_GET['t'];
+                      $models = Template::getItemsTag($var);
+                    }else{
+                      $models = Template::getItems();
+                    }
+                    
         
                 foreach($models as $model) { 
                    ?>

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Category;
+use app\models\Tag;
 
 
 /* @var $this yii\web\View */
@@ -37,6 +38,11 @@ use app\models\Category;
             $kategorija = Category::find()->all();
             $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
             echo $form->field($kategorija[0], '[]id')->label('Kategorija')->checkboxList($options, ['unselect'=>NULL]); ?>
+         
+            <?php 
+            $tagovi = Tag::find()->all();
+            $options2=\yii\helpers\ArrayHelper::map($tagovi, 'id', 'name');
+            echo $form->field($tagovi[0], '[]id')->label('Tag')->checkboxList($options2, ['unselect'=>NULL]); ?>
          
         </div>
     </div>
