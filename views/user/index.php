@@ -40,17 +40,17 @@ $this->title = 'My Yii Application';
     <div class="row" style="padding-top: 40px;">
         <?php
         if(isset($_GET['q'])){
-            $models = Category::getItemss($_GET['q']);
-            //$models = Template::getTemplates($_GET['q']);
+            //$models = Category::getItemss($_GET['q']);
+            $models = Template::getTemplates($_GET['q']);
         }else{
             
-            //$models = Template::getTemplates();
-            $models = Category::getItems();
+            $models = Template::randomItems();
+            //$models = Category::getItems();
         }
             foreach($models as $model) { 
                ?>
 
-               <div class="col-md-3 col-sm-6">
+               <div class="col-md-4 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
                         <span class="fa-stack fa-5x">
@@ -61,7 +61,7 @@ $this->title = 'My Yii Application';
                     <div class="panel-body">
                         <h4><?= $model->name ?></h4>
                         <p><?=  $model->description ?></p>
-                        <a href="http://localhost/pisma/web/index.php?r=user/kategorija&c=<?= $model->id?>" class="btn btn-primary">Vise</a>
+                        <a href="http://localhost/pisma/web/index.php?r=user/say&message=<?= $model->name?>" class="btn btn-primary">Vise</a>
                     </div>
                 </div>
             </div>
