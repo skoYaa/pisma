@@ -34,7 +34,7 @@ class UserController extends Controller
                         ],
         
                     [
-                        'actions' => ['index','contact','about','logout','access','kategorija','say'],
+                        'actions' => ['index','contact','about','logout','access','kategorija','say','advanced'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -163,9 +163,9 @@ class UserController extends Controller
         return $this->render('kategorije');
     }
 
-     public function actionPozivanje() {
+     public function actionAdvanced() {
    
-      return 'ok';
+      return $this->render('advanced');
           
     }
 

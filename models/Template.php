@@ -145,8 +145,6 @@ class Template extends \yii\db\ActiveRecord
     }
      
     public function randomItems() {
-        $min= Template::find()->min('id');
-        $max= Template::find()->max('id');
-        return $model = Template::find()->where(['active'=> 1])->orderBy(['name'=>rand($min, $max)])->limit(6)->all();
+        return $model = Template::find()->where(['active'=> 1])->orderBy('rand()')->limit(6)->all();
     }
 }

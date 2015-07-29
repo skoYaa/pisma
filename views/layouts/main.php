@@ -39,13 +39,17 @@ AppAsset::register($this);
                         <a href="http://localhost/pisma/web/index.php?r=user%2Findex"> <img src="img/logo.png" alt="logo"></a>
                     </div>
                     <div class="col-md-3">
-                        <div style="float: left; padding-top: 10px;">
+                        <div class="row">
+                           
+                            <div style="float: left; padding-top: 10px;">
                             <form class="navbar-form navbar-left" role="search">
                                     <?= Html::beginForm(["user/index"], "GET") ?>
                                       <input type="search" placeholder="" name="q" value="<?= isset($_GET['q']) ? Html::encode($_GET['q']) : '' ; ?>" />
                                       <input type="submit" value="Pretrazi" />
                                     <?= Html::endForm() ?>
-                            </form></div>
+                                      <a href="http://localhost/pisma/web/index.php?r=user/advanced"><i class="fa fa-2x fa-gears" style="padding-top: 7px"></i></a>
+                            </form></div></div>
+                        
                     </div>
                     <div class="col-md-5">
                         <div class="navbar-header navbar-right" style="font-size: 18px; padding-top: 10px; ">

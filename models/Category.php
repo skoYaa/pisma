@@ -107,7 +107,7 @@ class Category extends \yii\db\ActiveRecord {
     }
      public function getSubCategories($string)
     {
-  
+         $model->subCategories;
         return $models = Category::find()->where(['parent_category' => $string])->all();
    
     }

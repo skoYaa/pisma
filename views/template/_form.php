@@ -37,6 +37,14 @@ use app\models\Tag;
             <?php 
             $kategorija = Category::find()->all();
             $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
+//            foreach $kategorija as kate:
+//                if ($kate->paremt !== null);]
+//                draw checkbox
+//            endforeach;
+//                if (!empty($kate->subCategory))
+//                    foreach $kate->sub
+//                        draw subkate
+//            endforeach;
             echo $form->field($kategorija[0], '[]id')->label('Kategorija')->checkboxList($options, ['unselect'=>NULL]); ?>
          
             <?php 

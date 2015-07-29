@@ -2,7 +2,7 @@ $("#purchase-package_id").change(function () {
      console.log($(this).val());
      
      $.ajax({
-         url: 'index.php?r=user/index',
+         url: 'index.php?r=purchase/price',
          data: {
              id: $(this).val()
          },

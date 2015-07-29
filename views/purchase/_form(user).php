@@ -174,7 +174,7 @@ var httpRequest;
     }
     httpRequest.onreadystatechange = alertContents;
     httpRequest.open('GET', url);
-    httpRequest.send();
+    httpRequest.send();    
   }
 
   function alertContents() {

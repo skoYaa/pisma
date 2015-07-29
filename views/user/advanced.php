@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 <html>
 
-<div class="col-lg-6">
+<div class="container">
      <div style="color:LightBlue; overflow: hidden;"><h2>Napredna pretraga</h2></div>
 	 <div style="color:black; overflow: hidden;"><hr></div>
 	 <div class="row" >
@@ -15,7 +15,7 @@ use yii\helpers\Html;
 			<input type="checkbox" name="sex"  value="male">Opis<br>
 		</div>
 		<div class="col-sm-4">
-			U categoriji :<select class="ui dropdown">
+			U kategoriji :<select class="ui dropdown">
 		  <option value=""></option>
 		  <option value="1">Male</option>
 		  <option value="0">Female</option>
@@ -56,4 +56,5 @@ use yii\helpers\Html;
 	  <button type="submit"  class="btn btn-success">Nazad! </button>
 	 
 </div>
+    <br>
 </html>

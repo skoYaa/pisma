@@ -133,6 +133,10 @@ class PurchaseController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionPrice($id) {
+        return "TEST " . $id;
+    }
+    
     /**
      * Finds the Purchase model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
