@@ -28,13 +28,13 @@ class UserController extends Controller
                 
                 //'only' => ['index','contact','about','login','logout','create'],
                 'rules' => [
-                    ['actions' => ['index','login','create','about','contact'],
+                    ['actions' => ['index','login','create','about','contact','poslato','poslato2'],
                      'allow' => true,
                      'roles' => ['?']  
                         ],
         
                     [
-                        'actions' => ['index','contact','about','logout','access','kategorija','say','advanced'],
+                        'actions' => ['index','contact','about','logout','access','kategorija','say','advanced','poslato','poslato2'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -168,7 +168,25 @@ class UserController extends Controller
       return $this->render('advanced');
           
     }
+     public function actionPoslato() {
+        $ime = $_GET['name'];
 
+        $model=Package::find()->where([ 'name'=> $ime ])->one();
+        //$items=[$model->package_price,$model->category_amount];
+        //$arr= array('0' => model->package_price,'1' => model->category_amount );
+        //print_r($items);
+        return $model->package_price;
+      //return $model->package_price;
+          
+    }
+     public function actionPoslato2() {
+        $ime = $_GET['name'];
+
+        $model=Package::find()->where([ 'name'=> $ime ])->one();
+
+        return $model->category_amount;
+          
+    }
     
    
 }

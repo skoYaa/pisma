@@ -31,7 +31,7 @@ use app\models\Tag;
       <p>   
         <?php $model2 = Tag::getTags($model->id) ;
           foreach ($model2 as $mod) { ?>
-          <button type="button" class="btn btn-default"><?= $mod->name ?></button>
+          <a href="http://localhost/pisma/web/index.php?r=user/kategorija&t=<?= $model->id ?>"><button type="button" class="btn btn-default"><?= $mod->name ?></button></a>
           <?php
           }
 
@@ -51,7 +51,7 @@ use app\models\Tag;
 	 <h2 style="color:LightBlue;">Download Templata Pisma:</h2>
 	<p><a class="btn btn-primary" onclick="#" href="#"> Download .zip </a> 
 	<a class="btn btn-primary" onclick="#" href="#"> Download .PDF </a></p>
-  <a href="http://localhost/pisma/web/index.php?r=user/kategorija&c=1" class="btn btn-info" role="button">Nazad</a>
+  <a href="http://localhost/pisma/web/index.php?r=user/kategorija" class="btn btn-info" role="button">Nazad</a>
 				
 		
 </div></div></div>

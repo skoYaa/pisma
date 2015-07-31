@@ -25,10 +25,12 @@ $("#test").slideUp(1000).delay(1000).slideDown(1000);
 $this->title = 'My Yii Application';
 ?>
 <div class="container" style="padding-top: 40px;" >
-    <?php
-    if(!isset($_GET['q'])){ ?>
+
     <div  class="row">
         <div class="col-md-9">
+    <?php
+    if(!isset($_GET['q'])){ ?>
+            
             <div class="slider">
                 <img src="img/1.jpg" />
                 <img src="img/2.jpg" />

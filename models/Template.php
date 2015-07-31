@@ -123,6 +123,7 @@ class Template extends \yii\db\ActiveRecord
     {
         $modelic = CategoryTemplate::find()->where(['category_id' => $string]) ->all();
         $ids = ArrayHelper::getColumn($modelic, 'template_id');
+        //var_dump($ids);
         return $models = Template::find()->where(['in','id',$ids])->all();
 
 
@@ -131,6 +132,7 @@ class Template extends \yii\db\ActiveRecord
     {
         $modelic = TemplateTag::find()->where(['tag_id' => $string]) ->all();
         $ids = ArrayHelper::getColumn($modelic, 'template_id');
+        var_dump($ids);
         return $models = Template::find()->where(['in','id',$ids])->all();
       
 

@@ -37,14 +37,8 @@ use yii\helpers\Html;
 	 <hr>
 	 <div class="row" >
 	 <div class="col-sm-6">
-			Datum : <select class="ui dropdown">
-		  <option value=""></option>
-		  <option value="0"><</option>
-		  <option value="1">=</option>
-		  <option value="2">></option>
-	</select>
-	<input type="date" name="bday" min="2000-01-02" max="2016-12-31"><br><br>
-	
+		    Datum : <input type="text" value="02-16-2012">
+
 	
 		</div>
 		
@@ -58,3 +52,9 @@ use yii\helpers\Html;
 </div>
     <br>
 </html>
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker();
+});
+</script>

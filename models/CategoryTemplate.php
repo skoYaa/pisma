@@ -71,4 +71,5 @@ class CategoryTemplate extends \yii\db\ActiveRecord
         $models1 = Category::find()->where(['id' => $models->category_id])->one();
     return $models1->name;
     }
+ 
 }

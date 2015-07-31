@@ -17,6 +17,7 @@ $this->title = 'Kategorije';
 
 
         <div class="col-md-9">
+          <?php if(isset($_GET['c'])){ ?>
             <h2 class="page-header"><?php $var= Category::tempCategory($_GET['c']); echo $var->name;?></h2>
             <h3>Podkategorije:</h3>
             <div class="row"><div class="col-lg-12">
@@ -31,7 +32,7 @@ $this->title = 'Kategorije';
                      <?php }
                
                      ?></div>
-            </div>
+            </div><?php } ?>
             <div class="row">
                 <div class="col-lg-12" >
                     <h2 class="page-header">Pisma:</h2>
@@ -41,12 +42,12 @@ $this->title = 'Kategorije';
                     
                     
                     <?php
-                    if(isset($_GET['c'])) {
-                      $var=$_GET['c'];
-                      $models = Template::getItemsKategorija($var);
-                    }elseif(isset($_GET['t'])) {
+                    if(isset($_GET['t'])) {
                       $var=$_GET['t'];
                       $models = Template::getItemsTag($var);
+                    }elseif(isset($_GET['c'])) {
+                      $var=$_GET['c'];
+                      $models = Template::getItemsKategorija($var);
                     }else{
                       $models = Template::getItems();
                     }

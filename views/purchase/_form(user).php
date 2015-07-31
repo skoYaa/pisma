@@ -7,6 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Purchase */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="purchase-form">
@@ -73,10 +74,14 @@ use yii\widgets\ActiveForm;
             $model->end_date = 'NOW()'; //pokupi vrijednost 
             echo Html::activeHiddenInput($model, 'end_date'); //unese ga u polje pomocu hidden inputa.
     ?>
+    <?php
+            //use app\models\User;
+            $model->purchase_price = 100; //pokupi vrijednost 
+            echo Html::activeHiddenInput($model, 'purchase_price'); //unese ga u polje pomocu hidden inputa.
+    ?>
 
-
-    <?= $form->field($model, 'purchase_price')->textInput() ?>
-
+    Cijena: <input type="text" id="deftext" value="--" readonly> <br>
+    Borj kategorija: <input type="text" id="deftext2" value="--" readonly> <br>
           <div id='group1'>   
     <?php
                 use app\models\Category;
@@ -84,7 +89,7 @@ use yii\widgets\ActiveForm;
                 $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
                 ?> <div class='checkbox' ><?php echo $form->field($kategorija[0], '[]id')->label('Izaberi kategorije ispod:')->checkboxList($options, ['unselect'=>NULL]); 
     ?></div></div>
-    <input type='reset' value='Reset' name='reset' onclick="showCustomer()">
+    <input type='reset' value='Reset' name='reset' >
     <h3></h3>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Kupi' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -98,15 +103,50 @@ use yii\widgets\ActiveForm;
 <script src="http://code.jquery.com/jquery-latest.js"
         type="text/javascript"></script>
 <script>
+
     $(document).ready(function(){
-        
+        var broj = 10;
+        //$('input:checkbox').removeAttr('checked');
     //alert('radi'); 
     $( "#target" ).change(function() {
         //alert('radi2');
         var str = "";
-        
-        alert(str);
-        //$(".target1").val(str);
+
+        str=$("#target :selected").text();
+        //alert( str);
+         $.ajax({
+            method: "GET",
+            url: "http://localhost/pisma/web/index.php?r=user/poslato",
+            data: { name: str},
+
+            success: function(data){
+              //alert(data);
+              //$varijabla= data;
+              //$("#deftext").val($varijabla->purchase_price);
+              var a=data;
+                $("#deftext").val(a);
+                
+            },
+            
+          })
+          $.ajax({
+            method: "GET",
+            url: "http://localhost/pisma/web/index.php?r=user/poslato2",
+            data: { name: str},
+
+            success: function(data){
+              //alert(data);
+              //$varijabla= data;
+              //$("#deftext").val($varijabla->purchase_price);
+              broj=data;
+              if(broj==2) broj++;
+                $("#deftext2").val(broj);
+                
+            },
+            
+          })
+        $(":checkbox").removeAttr("disabled");
+        $('input:checkbox').removeAttr('checked');
 
    });
 
@@ -123,8 +163,10 @@ use yii\widgets\ActiveForm;
   // count checks
 
   function countChecked() {
-      if(checked+5>=count){
-          alert("nemozes vise checkirati");
+    
+      if(checked+1>= broj){
+        
+          alert("nemozes vise check-irati");
            $(":checkbox").attr("disabled", true);
            
       }else{
@@ -149,42 +191,7 @@ use yii\widgets\ActiveForm;
   
 });
 
-//'<?php echo Yii::$app->request->baseUrl. '/user/pozivanje' ?>'
-var httpRequest;
-  document.getElementById("ajaxButton").onchange = function() { makeRequest('test.html'); };
 
-  function makeRequest(url) {
-    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-      httpRequest = new XMLHttpRequest();
-    } else if (window.ActiveXObject) { // IE
-      try {
-        httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-      } 
-      catch (e) {
-        try {
-          httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-        } 
-        catch (e) {}
-      }
-    }
 
-    if (!httpRequest) {
-      alert('Giving up :( Cannot create an XMLHTTP instance');
-      return false;
-    }
-    httpRequest.onreadystatechange = alertContents;
-    httpRequest.open('GET', url);
-    httpRequest.send();    
-  }
-
-  function alertContents() {
-    if (httpRequest.readyState === 4) {
-      if (httpRequest.status === 200) {
-        alert(httpRequest.responseText);
-      } else {
-        alert('There was a problem with the request.');
-      }
-    }
-  }
    
 </script>
