@@ -51,7 +51,7 @@ use yii\helpers\ArrayHelper;
             <?php 
             $tagovi = Tag::find()->all();
             $options2=\yii\helpers\ArrayHelper::map($tagovi, 'id', 'name');
-            ?> <div id='cat2' > <?php echo $form->field($tagovi[0], '[]id')->label('Tag')->checkboxList($options2, ['unselect'=>NULL]); ?> </div>
+            echo $form->field($tagovi[0], '[]id')->label('Tag')->checkboxList($options2, ['unselect'=>NULL]); ?> 
          
         </div>
     </div>
@@ -65,61 +65,3 @@ use yii\helpers\ArrayHelper;
     <?php ActiveForm::end(); ?>
 
 </div>
-<script src="http://code.jquery.com/jquery-latest.js"
-        type="text/javascript"></script>
-<script >
-
-        $(document).ready(function(){
-            //alert("DA VIDIMO");try
-
-    if("<?php echo $_GET['id']; ?>")
-        var st = "<?php echo $_GET['id']; ?>";
-        //alert(st);
-
-
-
-  $.ajax({
-            method: "GET",
-            url: "http://localhost/pisma/web/index.php?r=category/test",
-            data: { name: st},
-
-            success: function(data){
-              //alert(data);
-              var array_data = String(data).split(":");
-
-                var i = 0;
-                var len = array_data.length;
-                $("#cat input:checkbox[value=1]").prop("checked",false);
-                for (; i < len; i++) {
-                   $("#cat input:checkbox[value="+array_data[i]+"]").prop("checked",true);
-             
-                }
-              
-            },
-            
-          });
-
-    $.ajax({
-            method: "GET",
-            url: "http://localhost/pisma/web/index.php?r=category/test2",
-            data: { name: st},
-
-            success: function(data){
-              //alert(data);
-              $("#cat2 input:checkbox[value=1]").prop("checked",false);
-              var array_data = String(data).split(":");
-
-                var i = 0;
-                var len = array_data.length;
-                $("#cat2 input:checkbox[value=1]").prop("checked",false);
-                for (; i < len; i++) {
-                   $("#cat2 input:checkbox[value="+array_data[i]+"]").prop("checked",true);
-             
-                }
-              
-            },
-            
-          });
-
-});
-        </script>

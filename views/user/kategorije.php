@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use app\models\Category;
 use app\models\Template;
+use app\models\Tag;
 $this->title = 'Kategorije';
 ?>
 
@@ -33,6 +34,9 @@ $this->title = 'Kategorije';
                
                      ?></div>
             </div><?php } ?>
+            <!-- ///////////////////////////////////////////////////////////////////////////   -->
+            <?php if(isset($_GET['t'])){ ?>
+            <h2 class="page-header"><?php $var= Tag::getTagbyid($_GET['t']); echo "Tag:"; echo $var->name;?></h2><?php } ?>
             <div class="row">
                 <div class="col-lg-12" >
                     <h2 class="page-header">Pisma:</h2>

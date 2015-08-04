@@ -7,6 +7,7 @@ use app\models\Account;
 use app\models\AccountSearch;
 use app\models\Package;
 use app\models\Category;
+use app\models\Purchase;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -14,6 +15,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Template;
 use yii\web\NotFoundHttpException;
+use yii\helpers\ArrayHelper;
 
 
 class UserController extends Controller
@@ -109,11 +111,19 @@ class UserController extends Controller
 
         return $this->render('index');
     }
-    public function actionSay($message = 'Hello')
-        
-    {   $ime = $_GET['message'];
+    public function actionSay($message = 'Hello')   
+    {   
+        $ime = $_GET['message'];
+        $id = Yii::$app->user->getId();
+        $provjera_dostupnosti = Purchase::getPurchasesbyiduser($id,$ime);
+
+        if($provjera_dostupnosti==1){
         $model=Template::getItemss($ime);
         return $this->render('say', ['model'=>$model ]);
+        }
+        
+            return $this->render('index');
+        
     }
 
     public function actionContact()

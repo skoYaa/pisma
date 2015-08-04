@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use app\models\CategoryTemplate;
 
 /**
  * This is the model class for table "category".
@@ -117,5 +118,21 @@ class Category extends \yii\db\ActiveRecord {
         return $models = Category::find()->where(['id' => $string])->one();
    
     }
+        public function getItemsKategorija($string)
+    {
+        $modelic = CategoryTemplate::find()->where(['template_id' => $string]) ->all();
+        $ids = ArrayHelper::getColumn($modelic, 'category_id');
+        //var_dump($ids);
+        return $models = Category::find()->where(['in','id',$ids])->all();
+
+        
+    }
+    public function getCategorybytemplateid($string)
+    {
+        $modelic = CategoryTemplate::find()->where(['template_id' => $string]) ->all();
+        return $ids = ArrayHelper::getColumn($modelic, 'category_id');
+        
+    }
+    
 
 }

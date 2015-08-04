@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use app\models\Tag;
 
 /**
  * This is the model class for table "tag".
@@ -68,5 +69,20 @@ class Tag extends \yii\db\ActiveRecord
         $ids = ArrayHelper::getColumn($modelic, 'tag_id');
         return $models = Tag::find()->where(['in','id',$ids])->all();
    
+    }
+    public function getItemsTag($string)
+    {
+        $modelic = TemplateTag::find()->where(['template_id' => $string]) ->all();
+        $ids = ArrayHelper::getColumn($modelic, 'tag_id');
+        //var_dump($ids);
+        return $models = Tag::find()->where(['in','id',$ids])->all();
+
+        
+    }
+     public function getTagbyid($string)
+    {
+        return $models = Tag::find()->where(['id'=>$string])->one();
+
+        
     }
 }

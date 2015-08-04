@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "purchase".
@@ -94,5 +95,31 @@ class Purchase extends \yii\db\ActiveRecord
     public function getPackage()
     {
         return $this->hasOne(Package::className(), ['id' => 'package_id']);
+    }
+    public function getPurchasesbyiduser($string,$string2)
+    {
+        $models = Purchase::find()->where(['account_id' => $string])->all();
+        $ids = ArrayHelper::getColumn($models, 'id');
+        $models2 = CategoryPurchase::find()->where(['in','purchase_id',$ids])->all();
+        $ids2 = ArrayHelper::getColumn($models2, 'category_id');
+        foreach ($ids2 as $key ) {
+                $kategorija= Category::getSubCategories($key);
+                foreach ($kategorija as $keyy) {
+                    array_push($ids2, $keyy->id);
+                }
+                
+        }
+        
+        $model=Template::getItemss($string2);
+        $it=Category::getCategorybytemplateid($model->id);
+        foreach ($it as $key) {
+            foreach ($ids2 as $ke) {
+                if($key==$ke)
+                    return 1;
+                # code...
+            }
+            # code...
+        }
+        return 0;
     }
 }

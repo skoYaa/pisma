@@ -6,6 +6,7 @@ use Yii;
 use app\models\Purchase;
 use app\models\PurchaseSearch;
 use app\models\CategoryPurchase;
+use app\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

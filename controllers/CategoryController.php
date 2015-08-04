@@ -7,7 +7,7 @@ use app\models\Category;
 use app\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
+use app\models\Tag;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
@@ -35,6 +35,7 @@ class CategoryController extends Controller
                 },
                 'rules' => [
                     [
+                    
                         'allow' => true,
                         'roles' => ['@'],
                     ]
@@ -140,6 +141,34 @@ class CategoryController extends Controller
 
         return $this->redirect(['index']);
     }
+      public function actionTest()
+    {
+        $id = $_GET['name'];
+
+        $models=Category::getItemsKategorija($id);
+        //$ids = ArrayHelper::getColumn($models, 'id');
+        $str= "";
+        foreach ($models as $key) {
+            $str=$str . $key->id;
+            $str=$str . ":" ;
+        }
+       return $str; 
+
+    }
+        public function actionTest2()
+    {
+        $id = $_GET['name'];
+
+        $models=Tag::getItemsTag($id);
+        //$ids = ArrayHelper::getColumn($models, 'id');
+        $str= "";
+        foreach ($models as $key) {
+            $str=$str . $key->id;
+            $str=$str . ":" ;
+        }
+       return $str; 
+
+    }
 
     /**
      * Finds the Category model based on its primary key value.
@@ -156,4 +185,5 @@ class CategoryController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

@@ -110,14 +110,7 @@ class Template extends \yii\db\ActiveRecord
     public function getItems()
     {
         return $models = Template::find()->all();
-        //$items = [];
-        //return $models = Template::find()->where(['parent_category' => [0]])->all();
-        /*foreach($models as $model) {
-            $items[] = ['label' => $model->name ,'url' => '#','items' => Category::getItemss($model->id),
-    ];
 
-        }
-        return $items;*/
     }
     public function getItemsKategorija($string)
     {
@@ -132,7 +125,7 @@ class Template extends \yii\db\ActiveRecord
     {
         $modelic = TemplateTag::find()->where(['tag_id' => $string]) ->all();
         $ids = ArrayHelper::getColumn($modelic, 'template_id');
-        var_dump($ids);
+        //var_dump($ids);
         return $models = Template::find()->where(['in','id',$ids])->all();
       
 

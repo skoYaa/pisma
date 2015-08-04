@@ -31,7 +31,7 @@ use app\models\Tag;
       <p>   
         <?php $model2 = Tag::getTags($model->id) ;
           foreach ($model2 as $mod) { ?>
-          <a href="http://localhost/pisma/web/index.php?r=user/kategorija&t=<?= $model->id ?>"><button type="button" class="btn btn-default"><?= $mod->name ?></button></a>
+          <a href="http://localhost/pisma/web/index.php?r=user/kategorija&t=<?= $mod->id ?>"><button type="button" class="btn btn-default"><?= $mod->name ?></button></a>
           <?php
           }
 

@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
             echo $form->field($model, 'payment_method_id')->dropDownList(
                 $listData, 
-                ['prompt'=>'Izaberi...']); 
+                ['prompt'=>'Izaberi...'])->label("Nacin placanja :"); 
             
                 
     ?>
@@ -38,7 +38,7 @@ use yii\widgets\ActiveForm;
 
                 echo $form->field($model, 'package_id')->dropDownList(
                     $listData, 
-                    ['prompt'=>'Izaberi']);        
+                    ['prompt'=>'Izaberi'])->label("Paket :"); ;        
     ?>
     </div> 
 
@@ -80,16 +80,17 @@ use yii\widgets\ActiveForm;
             echo Html::activeHiddenInput($model, 'purchase_price'); //unese ga u polje pomocu hidden inputa.
     ?>
 
-    Cijena: <input type="text" id="deftext" value="--" readonly> <br>
-    Borj kategorija: <input type="text" id="deftext2" value="--" readonly> <br>
-          <div id='group1'>   
+    Cijena: <br><input type="text" id="deftext" style="background-color: #FFFFFF;"value="--" readonly> <br>
+    Borj kategorija: <br><input type="text" style="background-color: #FFFFFF;" id="deftext2" value="--" readonly> <br>
+          <div id='group1'> 
+
     <?php
                 use app\models\Category;
                 $kategorija = Category::getItems();
                 $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
-                ?> <div class='checkbox' ><?php echo $form->field($kategorija[0], '[]id')->label('Izaberi kategorije ispod:')->checkboxList($options, ['unselect'=>NULL]); 
+                ?> <div class='checkbox' ><?php echo 'Izaberi kategorije :'; echo $form->field($kategorija[0], '[]id')->label('')->checkboxList($options, ['unselect'=>NULL]); 
     ?></div></div>
-    <input type='reset' value='Reset' name='reset' >
+    <button type="button" onClick="window.location.reload();">Reizbor opcija</button>
     <h3></h3>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Kupi' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -106,12 +107,14 @@ use yii\widgets\ActiveForm;
 
     $(document).ready(function(){
         var broj = 10;
+        $("#target").attr("disabled","disabled");
         //$('input:checkbox').removeAttr('checked');
     //alert('radi'); 
     $( "#target" ).change(function() {
         //alert('radi2');
+        
         var str = "";
-
+        broj =10;
         str=$("#target :selected").text();
         //alert( str);
          $.ajax({
@@ -166,7 +169,7 @@ use yii\widgets\ActiveForm;
     
       if(checked+1>= broj){
         
-          alert("nemozes vise check-irati");
+          alert("Selektovali ste maksimalan broj kategorja za izabrani paket!");
            $(":checkbox").attr("disabled", true);
            
       }else{
@@ -174,7 +177,7 @@ use yii\widgets\ActiveForm;
       }
     
     checked = $("input:checked").length; 
-    console.log(checked);
+    console.log("broj cekiranih :"+checked);
       
           
     
@@ -182,11 +185,12 @@ use yii\widgets\ActiveForm;
   
   countChecked();
   $(":checkbox").click(countChecked);
-  $("#restart").click(function(){
-    $("input.group1").removeAttr("disabled"); 
-    $('input.group1').attr('checked', false);
-    checked = 0;
-  });
+  // $("#restart").click(function(){
+  //   $("input.group1").removeAttr("disabled"); 
+  //   $('input.group1').attr('checked', false);
+  //   checked = 0;
+  //   broj=10;
+  // });
   
   
 });
