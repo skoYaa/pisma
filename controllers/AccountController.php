@@ -122,6 +122,19 @@ class AccountController extends Controller {
                     ]);
                 }
             }
+            public function actionUpdateuser() {
+                $this->layout='main';
+                $id =Yii::$app->user->identity->id;
+                $model = $this->findModel($id);
+
+                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                    return $this->redirect('index.php?r=user');
+                } else {
+                    return $this->render('update(user)', [
+                                'model' => $model,
+                    ]);
+                }
+            }
 
             /**
              * Deletes an existing account model.

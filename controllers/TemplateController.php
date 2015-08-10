@@ -139,24 +139,39 @@ class TemplateController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
+          $postCategories = Yii::$app->request->post("Category");
+          foreach( $model->categoryTemplates as $category) {
+              
+          if (in_array($category->category_id, $postCategories)) {
+
+          } else {
+              $category->delete();
+          }
+        }
+            
           foreach (Yii::$app->request->post("Category") as $category){
               $model1= new CategoryTemplate();
               $model1->category_id=$category['id'][0];
               $model1->template_id=$model->id;
               $model1->save();
           }
-          foreach (Yii::$app->request->post("Tag") as $tag){
-              $model1= new TemplateTag();
-              $model1->tag_id=$tag['id'][0];
-              $model1->template_id=$model->id;
-              $model1->save();
-          }
-          foreach (Yii::$app->request->post("Category") as $category){
-              $model1= new CategoryTemplate();
-              $model1->category_id=$category['id'][0];
-              $model1->template_id=$model->id;
-              $model1->save();
-          }
+
+          $postTags = Yii::$app->request->post("Tag");
+          // die(var_export(Yii::$app->request->post("Tag")));
+          foreach( $model->templateTags as $tag) {
+              
+          if (in_array($tag->tag_id, $postTags)) {
+              // $model1= new TemplateTag();
+              // $model1->tag_id=$tag['id'][0];
+              // $model1->template_id=$model->id;
+              // $model1->save();
+          } else {
+              $tag->delete();
+        }
+      }
+      
+
+                    
           foreach (Yii::$app->request->post("Tag") as $tag){
               $model1= new TemplateTag();
               $model1->tag_id=$tag['id'][0];

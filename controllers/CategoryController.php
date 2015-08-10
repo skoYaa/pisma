@@ -146,13 +146,13 @@ class CategoryController extends Controller
         $id = $_GET['name'];
 
         $models=Category::getItemsKategorija($id);
-        //$ids = ArrayHelper::getColumn($models, 'id');
-        $str= "";
-        foreach ($models as $key) {
-            $str=$str . $key->id;
-            $str=$str . ":" ;
-        }
-       return $str; 
+        return json_encode(\yii\helpers\ArrayHelper::getColumn($models, 'id'));
+       //  $str= "";
+       //  foreach ($models as $key) {
+       //      $str=$str . $key->id;
+       //      $str=$str . ":" ;
+       //  }
+       // return $str; 
 
     }
         public function actionTest2()
@@ -160,13 +160,14 @@ class CategoryController extends Controller
         $id = $_GET['name'];
 
         $models=Tag::getItemsTag($id);
+        return json_encode(\yii\helpers\ArrayHelper::getColumn($models, 'id'));
         //$ids = ArrayHelper::getColumn($models, 'id');
-        $str= "";
-        foreach ($models as $key) {
-            $str=$str . $key->id;
-            $str=$str . ":" ;
-        }
-       return $str; 
+       //  $str= "";
+       //  foreach ($models as $key) {
+       //      $str=$str . $key->id;
+       //      $str=$str . ":" ;
+       //  }
+       // return $str; 
 
     }
 

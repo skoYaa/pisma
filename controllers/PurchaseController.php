@@ -83,7 +83,15 @@ class PurchaseController extends Controller
               $model1->purchase_id=$model->id;
               $model1->save();
           }
-            return $this->redirect(['//user/index.php']);
+
+          // Yii::$app->mailer->compose()
+          //       ->setFrom('nina@domain.com')
+          //       ->setTo('facadain@gmail.com')
+          //       ->setSubject('Message subject')
+          //       ->setTextBody('Plain text content')
+          //       ->setHtmlBody('<b>HTML content</b>')
+          //       ->send();
+            return $this->redirect(['//user/index']);
         } else { 
             $isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
             if($isAdmin=='1'){ //ako je admin, baca ga na admin kontroler

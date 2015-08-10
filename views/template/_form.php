@@ -25,6 +25,12 @@ use yii\helpers\ArrayHelper;
 
             <?= $form->field($model, 'text')->label('Sadržaj pisma')->textarea(['maxlength' => 1000], ['rows' => '6']) ?>
 
+            <?php 
+                $tagovi=$model->templateTags;
+            foreach ($tagovi as $key ) {
+                print_r($key->id);
+            }
+             ?>
 
         </div>
         <div class="col-md-6">
@@ -85,8 +91,7 @@ use yii\helpers\ArrayHelper;
 
             success: function(data){
               //alert(data);
-              var array_data = String(data).split(":");
-
+              array_data = JSON.parse(data);
                 var i = 0;
                 var len = array_data.length;
                 $("#cat input:checkbox[value=1]").prop("checked",false);
@@ -107,7 +112,7 @@ use yii\helpers\ArrayHelper;
             success: function(data){
               //alert(data);
               $("#cat2 input:checkbox[value=1]").prop("checked",false);
-              var array_data = String(data).split(":");
+              array_data = JSON.parse(data);
 
                 var i = 0;
                 var len = array_data.length;

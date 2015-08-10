@@ -142,7 +142,7 @@ use yii\widgets\ActiveForm;
               //$varijabla= data;
               //$("#deftext").val($varijabla->purchase_price);
               broj=data;
-              if(broj==2) broj++;
+              
                 $("#deftext2").val(broj);
                 
             },
@@ -166,8 +166,8 @@ use yii\widgets\ActiveForm;
   // count checks
 
   function countChecked() {
-    
-      if(checked+1>= broj){
+        checked = $("input:checked").length; 
+      if(checked>= broj){
         
           alert("Selektovali ste maksimalan broj kategorja za izabrani paket!");
            $(":checkbox").attr("disabled", true);
@@ -176,7 +176,7 @@ use yii\widgets\ActiveForm;
          $(":checkbox").removeAttr("disabled"); 
       }
     
-    checked = $("input:checked").length; 
+
     console.log("broj cekiranih :"+checked);
       
           

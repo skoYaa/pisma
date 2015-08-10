@@ -12,6 +12,18 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+        margin: 20px;
+    }
+</style>
+</head>
 <?php $this->beginPage() ?>
 
 <!DOCTYPE html>
@@ -68,7 +80,15 @@ AppAsset::register($this);
                                     echo '<li><a href="http://localhost/pisma/web/index.php?r=user/login">Login</a></li>';
                                 } else {
                                     $ime = Yii::$app->user->identity->user_name;
-                                    echo '<li><a href="http://localhost/pisma/web/index.php?r=user/logout">Logout(' . $ime . ')</a></li>';
+                                    ?>
+                                <li class='dropdown'>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?= $ime ?> 
+                                        <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a href="http://localhost/pisma/web/index.php?r=account/updateuser">Profil</a></li>
+                                      <li><a href="http://localhost/pisma/web/index.php?r=user/logout">Logout</a></li>
+                                    </ul>
+                                </li> <?php
                                 }
                                 ?>
                             </ul>

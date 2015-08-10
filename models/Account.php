@@ -161,6 +161,16 @@ class Account extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         $password = \md5($password);
         return $this->pass === $password;
     }
+    public function beforeSave($update)
+{
+    if (parent::beforeSave($update)) {
+        $this->pass= \md5($this->pass);
+
+        return true;
+    } else {
+        return false;
+    }
+}
     
     
     
