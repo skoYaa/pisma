@@ -24,13 +24,13 @@ use yii\helpers\ArrayHelper;
             <?= $form->field($model, 'description')->label('Opis')->textInput(['maxlength' => 200]) ?>
 
             <?= $form->field($model, 'text')->label('Sadržaj pisma')->textarea(['maxlength' => 1000], ['rows' => '6']) ?>
-
+<!-- 
             <?php 
                 $tagovi=$model->templateTags;
             foreach ($tagovi as $key ) {
                 print_r($key->id);
             }
-             ?>
+             ?> -->
 
         </div>
         <div class="col-md-6">
@@ -40,24 +40,24 @@ use yii\helpers\ArrayHelper;
             echo Html::activeHiddenInput($model, 'account_id'); //unese ga u polje pomocu hidden inputa.
             ?>
 
-            <?= $form->field($model, 'active')->label('Active')->radioList(['0' => 'Neaktivan', '1' => 'Aktivan']); ?>
+            <?= $form->field($model, 'active')->label('Aktivnost :')->radioList(['0' => 'Neaktivan', '1' => 'Aktivan']); ?><hr>
+            <h2>Kategorije:</h2>
             <?php 
-            $kategorija = Category::find()->all();
+            $kat = Category::getItems();
+            foreach ($kat as $key ) {
+                $kategorija=Category::getSubCategories($key->id);
+                array_unshift($kategorija,$key);
+            echo $key->name.' :';
             $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
-//            foreach $kategorija as kate:
-//                if ($kate->paremt !== null);]
-//                draw checkbox
-//            endforeach;
-//                if (!empty($kate->subCategory))
-//                    foreach $kate->sub
-//                        draw subkate
-//            endforeach;
-            ?> <div id='cat' > <?php echo $form->field($kategorija[0], '[]id')->label('Kategorija')->checkboxList($options, ['unselect'=>NULL]); ?></div>
-         
+
+            ?> <div id='cat' > <?php if(! empty($kategorija )) echo $form->field($kategorija[0], '[]id')->label(false)->checkboxList($options, ['unselect'=>NULL]); ?></div>
+          <hr>
+          <?php } ?>
+          <h2>Tagovi:</h2>
             <?php 
             $tagovi = Tag::find()->all();
             $options2=\yii\helpers\ArrayHelper::map($tagovi, 'id', 'name');
-            ?> <div id='cat2' > <?php echo $form->field($tagovi[0], '[]id')->label('Tag')->checkboxList($options2, ['unselect'=>NULL]); ?> </div>
+            ?> <div id='cat2' > <?php echo $form->field($tagovi[0], '[]id')->label(false)->checkboxList($options2, ['unselect'=>NULL]); ?> </div>
          
         </div>
     </div>

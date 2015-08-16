@@ -17,16 +17,9 @@ use yii\filters\VerbFilter;
 class PurchaseController extends Controller
 {
     
-    /*$isAdmin = Yii::$app->user->identity->administrator; //pokupi vrijednost administrator polja
-            if($isAdmin=='1'){ //ako je admin, baca ga na admin kontroler
-                public $layout = 'main_';
-            ;
-            }
-            else {
-                        public $layout = 'main';
-                    
-                }  */
-    
+    public $layout='main_';
+
+
     public function behaviors()
     {
         return [
@@ -74,6 +67,7 @@ class PurchaseController extends Controller
     public function actionCreate()
     {
         $model = new Purchase();
+        $this->layout='main';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 

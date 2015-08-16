@@ -35,23 +35,24 @@ use yii\helpers\ArrayHelper;
             ?>
 
             <?= $form->field($model, 'active')->label('Active')->radioList(['0' => 'Neaktivan', '1' => 'Aktivan']); ?>
+               <h2>Kategorije:</h2><div id='cat' >
             <?php 
-            $kategorija = Category::find()->all();
+            $kat = Category::getItems();
+            foreach ($kat as $key ) {
+                $kategorija=Category::getSubCategories($key->id);
+                array_unshift($kategorija,$key);
+            echo $key->name.' :';
             $options=\yii\helpers\ArrayHelper::map($kategorija, 'id', 'name');
-//            foreach $kategorija as kate:
-//                if ($kate->paremt !== null);]
-//                draw checkbox
-//            endforeach;
-//                if (!empty($kate->subCategory))
-//                    foreach $kate->sub
-//                        draw subkate
-//            endforeach;
-            ?> <div id='cat' > <?php echo $form->field($kategorija[0], '[]id')->label('Kategorija')->checkboxList($options, ['unselect'=>NULL]); ?></div>
-         
+
+            ?><?php if(! empty($kategorija )) echo $form->field($kategorija[0], '[]id')->label(false)->checkboxList($options, ['unselect'=>NULL]); ?>
+          <hr>
+          <?php } ?>
+          </div>
+          <h2>Tagovi:</h2>
             <?php 
             $tagovi = Tag::find()->all();
             $options2=\yii\helpers\ArrayHelper::map($tagovi, 'id', 'name');
-            echo $form->field($tagovi[0], '[]id')->label('Tag')->checkboxList($options2, ['unselect'=>NULL]); ?> 
+            ?> <div id='cat2' > <?php echo $form->field($tagovi[0], '[]id')->label(false)->checkboxList($options2, ['unselect'=>NULL]); ?> </div>
          
         </div>
     </div>
@@ -65,3 +66,9 @@ use yii\helpers\ArrayHelper;
     <?php ActiveForm::end(); ?>
 
 </div>
+<script src="http://code.jquery.com/jquery-latest.js"
+        type="text/javascript"></script>
+<script >
+    $("#cat input:checkbox ").prop("checked",false);
+    $("#cat2 input:checkbox ").prop("checked",false);
+</script>

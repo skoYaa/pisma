@@ -102,7 +102,7 @@ class Template extends \yii\db\ActiveRecord
     public function getTemplates($q='')
     {
         if($q!=''){
-            return $models = Template::find()->where(['name' => $q, 'active'=> 1])->all();   
+            return $models = Template::find()->where(['like', 'name', $q])->andWhere(['active'=> 1])->all();   
         }
         return $models = Template::find()->where(['active'=> 1])->all();
  

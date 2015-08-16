@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use dosamigos\datepicker\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Purchase */
@@ -12,21 +13,48 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+    
 
-    <?= $form->field($model, 'payment_method_id')->textInput() ?>
+    <h4>Nacin placanja: <?php $model1=  \app\models\PaymentMethod::find()->where(['id'=>$model->payment_method_id])->one(); echo $model1->payment_method; ?></h4>
 
-    <?= $form->field($model, 'package_id')->textInput() ?>
+    <h4>Paket: <?php $model2= \app\models\Package::find()->where(['id'=>$model->package_id])->one(); echo $model2->name; ?></h4>
 
-    <?= $form->field($model, 'purchase_date')->textInput() ?>
+    <h4><?= "Datum narudzbe: ". $model->purchase_date ?></h4>
 
     <?= $form->field($model, 'paid')->textInput() ?>
 
-    <?= $form->field($model, 'paid_date')->textInput() ?>
+    <?= $form->field($model, 'paid_date')->widget(
+    DatePicker::className(), [
+        'inline' => FALSE, 
+        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+            'startDate' => date('2000-01-01')
+        ]
+]);?>
 
-    <?= $form->field($model, 'start_date')->textInput() ?>
+    
+    <?= $form->field($model, 'start_date')->widget(
+    DatePicker::className(), [
+        'inline' => FALSE, 
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+            'startDate' => date('2000-01-01')
+        ]
+]);?>
 
-    <?= $form->field($model, 'end_date')->textInput() ?>
+    
+    <?= $form->field($model, 'end_date')->widget(
+    DatePicker::className(), [
+        'inline' => FALSE, 
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd',
+            'startDate' => date('2000-01-01')
+        ]
+]);?>
 
     <?= $form->field($model, 'purchase_price')->textInput() ?>
 

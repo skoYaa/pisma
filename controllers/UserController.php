@@ -8,6 +8,7 @@ use app\models\AccountSearch;
 use app\models\Package;
 use app\models\Category;
 use app\models\Purchase;
+use app\models\CategoryPurchase;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -36,7 +37,7 @@ class UserController extends Controller
                         ],
         
                     [
-                        'actions' => ['index','contact','about','logout','access','kategorija','say','advanced','poslato','poslato2'],
+                        
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -197,6 +198,81 @@ class UserController extends Controller
         return $model->category_amount;
           
     }
-    
+    public function actionPaket1() {
    
+      $model = new Purchase();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+             foreach (Yii::$app->request->post("Category") as $category){
+              $model1= new CategoryPurchase();
+              $model1->category_id=$category['id'][0];
+              $model1->purchase_id=$model->id;
+              $model1->save();
+          }
+
+          // Yii::$app->mailer->compose()
+          //       ->setFrom('nina@domain.com')
+          //       ->setTo('facadain@gmail.com')
+          //       ->setSubject('Message subject')
+          //       ->setTextBody('Plain text content')
+          //       ->setHtmlBody('<b>HTML content</b>')
+          //       ->send();
+            return $this->redirect(['user/index']);
+        }
+        return $this->render('paket1');
+          
+    }
+    
+    public function actionPaket2() {
+   
+      $model = new Purchase();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+             foreach (Yii::$app->request->post("Category") as $category){
+              $model1= new CategoryPurchase();
+              $model1->category_id=$category['id'][0];
+              $model1->purchase_id=$model->id;
+              $model1->save();
+          }
+
+          // Yii::$app->mailer->compose()
+          //       ->setFrom('nina@domain.com')
+          //       ->setTo('facadain@gmail.com')
+          //       ->setSubject('Message subject')
+          //       ->setTextBody('Plain text content')
+          //       ->setHtmlBody('<b>HTML content</b>')
+          //       ->send();
+            return $this->redirect(['user/index']);
+        }
+        return $this->render('paket2');
+          
+    }
+   
+    public function actionPaket3() {
+   
+      $model = new Purchase();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+             foreach (Yii::$app->request->post("Category") as $category){
+              $model1= new CategoryPurchase();
+              $model1->category_id=$category['id'][0];
+              $model1->purchase_id=$model->id;
+              $model1->save();
+          }
+
+          // Yii::$app->mailer->compose()
+          //       ->setFrom('nina@domain.com')
+          //       ->setTo('facadain@gmail.com')
+          //       ->setSubject('Message subject')
+          //       ->setTextBody('Plain text content')
+          //       ->setHtmlBody('<b>HTML content</b>')
+          //       ->send();
+            return $this->redirect(['user/index']);
+        }
+        return $this->render('paket3');
+          
+    }
 }

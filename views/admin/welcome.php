@@ -47,7 +47,7 @@ use yii\grid\GridView;
             'columns' => [
                 //['class' => 'yii\grid\SerialColumn'],
 
-                [ 'attribute' => 'account_id', 'label' => 'Korisnik', 'value' => 'account.user_name'],
+                [ 'attribute' => 'account_id', 'label' => 'Korisnik','format' => 'raw', 'value' => function($data){return "<a href=\"?r=purchase%2Fupdate&id={$data->id}\">{$data->account->user_name}</a>";}],
                 [ 'attribute' => 'package_id', 'label' => 'Paket', 'value' => 'package.name'],
                 [ 'attribute' => 'purchase_date', 'label' => 'Datum naruđbe'],
                 [ 'attribute' => 'paid', 'label' => 'Platio'],

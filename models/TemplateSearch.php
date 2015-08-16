@@ -64,8 +64,8 @@ class TemplateSearch extends Template
         ]);
 
         $query->andFilterWhere(['like', 'text', $this->text])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->orFilterWhere(['like', 'name', $this->text])
+            ->orFilterWhere(['like', 'description', $this->text]);
 
         return $dataProvider;
     }

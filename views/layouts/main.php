@@ -128,7 +128,7 @@ AppAsset::register($this);
         ?>
 
 
-        <div class="container" style="padding-top: 50px;">
+        <div class="container" style="padding-top: 50px; padding-left: 0px;">
             <div class="row">
                 <div class="col-md-9">
                     <?=

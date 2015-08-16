@@ -10,7 +10,7 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container" style="padding-top: 40px; float: left">
+<div class="container" style="padding-top: 40px;">
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
